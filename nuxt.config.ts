@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     }
   },
   css: [
-    "@/assets/global.scss"
+    "@/assets/global.scss",
+    "@/assets/fonts.scss"
   ]
 })
