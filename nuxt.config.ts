@@ -13,7 +13,12 @@ export default defineNuxtConfig({
     }
   },
   css: [
+    "@/assets/fonts.scss",
+    "@/node_modules/bootstrap/dist/css/bootstrap-grid.min.css",
+    "@/node_modules/bootstrap/dist/css/bootstrap-utilities.min.css",
     "@/assets/global.scss",
-    "@/assets/fonts.scss"
-  ]
+  ],
+  plugins:[
+    {src: '@/plugins/sweetalert.js', mode: 'client'}
+  ],
 })
