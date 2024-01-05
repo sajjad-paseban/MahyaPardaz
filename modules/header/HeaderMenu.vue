@@ -18,27 +18,27 @@
             </NuxtLink>
         </li>
         <li class="menu-item">
-            <NuxtLink to="/">
+            <NuxtLink to="/project">
                 پروژه های ما
             </NuxtLink>
         </li>
         <li class="menu-item">
-            <NuxtLink to="/">
+            <NuxtLink to="/about-us">
                 درباره ما
             </NuxtLink>
         </li>
         <li class="menu-item">
-            <NuxtLink to="/">
+            <NuxtLink to="/service">
                 خدمات ما
             </NuxtLink>
         </li>
         <li class="menu-item">
-            <NuxtLink to="/">
+            <NuxtLink to="/blog">
                 بلاگ
             </NuxtLink>
         </li>
         <li class="menu-item menu-item-btn">
-            <NuxtLink to="/">
+            <NuxtLink to="/contact-us">
                 ارتباط با ما
             </NuxtLink>
         </li>
@@ -50,27 +50,27 @@
             </NuxtLink>
         </li>
         <li class="menu-item">
-            <NuxtLink to="/">
+            <NuxtLink to="/project">
                 پروژه های ما
             </NuxtLink>
         </li>
         <li class="menu-item">
-            <NuxtLink to="/">
+            <NuxtLink to="/about-us">
                 درباره ما
             </NuxtLink>
         </li>
         <li class="menu-item">
-            <NuxtLink to="/">
+            <NuxtLink to="/service">
                 خدمات ما
             </NuxtLink>
         </li>
         <li class="menu-item">
-            <NuxtLink to="/">
+            <NuxtLink to="/blog">
                 بلاگ
             </NuxtLink>
         </li>
         <li class="menu-item menu-item-btn">
-            <NuxtLink to="/">
+            <NuxtLink to="/contact-us">
                 ارتباط با ما
             </NuxtLink>
         </li>

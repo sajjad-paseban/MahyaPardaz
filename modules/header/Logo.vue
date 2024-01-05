@@ -16,11 +16,15 @@
 <style scoped lang="scss">
     .logo{
         user-select: none;
-        &.transparent{
-            .logo-title{
-                color: #ffffff;
+        
+        @media screen and (min-width: 950px) {
+            &.transparent{
+                .logo-title{
+                    color: #ffffff;
+                }
             }
         }
+
         .logo-title{
             position: relative;
             bottom: 12px;
