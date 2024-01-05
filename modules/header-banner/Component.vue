@@ -30,7 +30,7 @@
                 <p>
                     اپلیکیشن موبایل یک ابزار اطلاعاتی به حساب می آید. اگر تعداد مشخصی مشتری ثابت دارید. اگر به دنبال افراد وفادار به کسب و کار خود هستید. اگر خدماتی انحصاری ارایه میدهید. اگر قصد ساخت ابزاری کاربردی دارید و…
                 </p>
-                <BtnRound title="نمونه کارهای ما" />
+                <BtnRound title="نمونه کارهای ما" :is-submit="false" />
             </div>
         </div>
         <img src="@/assets/images/background/rtl-bg-bottom.svg" alt="">
@@ -40,12 +40,12 @@
 
 <style lang="scss" scoped>
     .background{
-        position: relative;
-        z-index: -10;
+        position: absolute;
+        z-index: 0;
         width: 100%;
         .background-layer{
             background-image: linear-gradient(127deg, #384DFF 0%, #24CDFF 91%);
-            height: inherit;
+            min-height: 640px;
             opacity: 0.8;
         }
         .background-main{
@@ -74,6 +74,12 @@
                     background-color: #F2F3F4;
                     padding: 20px 20px;
                     margin: 0 10px;
+                    bottom: 0;
+                    transition: bottom 300ms linear;
+                    &:hover{
+                        position: relative;
+                        bottom: 10px;
+                    }
                     img{
                         width: 50px;
                         height: 50px;
@@ -94,6 +100,7 @@
                     font-family: 'sans';
                     font-size: 14px;
                     direction: rtl;
+                    text-align: justify;
                 }                
             }
         }
@@ -102,9 +109,34 @@
             bottom: 0;
             width: 100%;
         }
-        height: 640px;
         background-image: url('@/assets/images/background/welcome.jpg');
         background-position: center center;
         background-size: cover;
+    }
+    @media screen and (max-width: 950px) {
+        .background-layer{
+            min-height: 700px !important;
+        }
+        .background-main{
+            top: 85px !important;
+            flex-wrap: wrap;
+            flex-direction: column-reverse;
+            .bg-main-intro{
+                h1{
+                    font-size: 28px !important;
+                }
+                p{
+                    text-align: justify;
+                }
+                width: calc(100% - 10%) !important;
+                padding: 0 5% !important;
+            }
+            .bg-main-icons{
+                width: calc(100%) !important;
+                padding: 70px 0 !important;
+                row-gap: 20px;
+                justify-content: center;
+            }
+        }
     }
 </style>
