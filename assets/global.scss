@@ -1,11 +1,29 @@
 body{
     padding: 0;
     margin: 0;
-    background-color: antiquewhite;
+    background-color: #fff;
+}
+.swal2-container{
+    font-family: 'yekan';
+    direction: rtl;
+}
+a{
+    &[data-lang="en"]{
+        font-family: 'calibri';
+        position: relative;
+        top: 1.2px;
+    }
+    &[data-url="out"]{
+        text-decoration: underline;
+    }
+    text-decoration: none;
+    user-select: none;
+    cursor: pointer;
+    transition: color 300ms;
 }
 
-a{
-    text-decoration: none;
+button{
+    cursor: pointer;
 }
 
 .h-3{
@@ -14,4 +32,8 @@ a{
 
 .fade{
     transition: all 500ms;
+}
+
+p{
+    line-height: 1.5;
 }
