@@ -33,6 +33,8 @@
         box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.06);
         border-radius: 40px 40px 4px 40px;
         width: calc(40.5% - 20px);
+        min-height: 180px;
+        max-height: 250px;
         margin: 10px;
         direction: rtl;
         font-family: 'yekan';
@@ -45,7 +47,8 @@
         }
         
         p{
-            font-size: 18px;
+            font-size: 15px;
+            text-align: justify;
             line-height: 1.5;
             color: #6F8BA4;
         }

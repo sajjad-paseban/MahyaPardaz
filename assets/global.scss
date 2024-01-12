@@ -6,7 +6,15 @@ body{
 .swal2-container{
     font-family: 'yekan';
     direction: rtl;
+
+    .swal2-actions{
+        direction: ltr;
+        button{
+            font-family: 'yekan';
+        }
+    }
 }
+
 a{
     &[data-lang="en"]{
         font-family: 'calibri';
@@ -36,4 +44,42 @@ button{
 
 p{
     line-height: 1.5;
+}
+
+.custom-row{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: calc(100% - 10px);
+}
+
+.title{
+    color: #3B566E;
+    font-family: vazir;
+}
+.tox-promotion-link{
+    display: none !important;  
+}
+.tox-statusbar__branding{
+    display: none !important;
+}
+
+.datagrid-table{
+    &::-webkit-scrollbar {
+        width: 8px;
+      }
+      
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+    }
+       
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+       background: #3B566E; 
+       border-radius: 5px;
+    }
+      
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+    }
 }

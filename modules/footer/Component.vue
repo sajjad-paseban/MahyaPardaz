@@ -6,7 +6,8 @@
     import LinkedinIcon from '../../assets/svg/LinkedinIcon.vue'
     import GmailIcon from '../../assets/svg/GmailIcon.vue'
     import EitaIcon from '../../assets/svg/EitaIcon.vue'
-
+    import { getBaseInfo } from '~/helpers/function'
+    import { get_addresses } from '@/services/address.service'
     export default defineComponent({
         name: 'FooterModule',
         components:{
@@ -16,6 +17,21 @@
             LinkedinIcon,
             GmailIcon,
             EitaIcon,
+        },
+        data(){
+            return {
+                seo_description: null,
+                email: null,
+                seo_title: null,
+                addresses: []
+            }
+        },
+        async beforeMount(){
+            const res = await get_addresses().then(res => res)
+            this.seo_title = getBaseInfo().seo_title
+            this.seo_description = getBaseInfo().seo_description
+            this.email = getBaseInfo().email
+            this.addresses = res.data.entities.addresses
         }
     })
 
@@ -28,24 +44,31 @@
             <div class="col-lg-3 col-12 px-5 px-lg-0 d-flex flex-wrap justify-content-end footer-menu">
                 <h2>ارتباط با ما</h2>
                 <ul>
-                    <li class="d-flex flex-wrap flex-column-reverse justify-content-end">
-                        <div class="col-12 col-lg-auto">
+                    <li v-for="(i, index) in addresses" :key="index" class="d-flex flex-wrap flex-column-reverse justify-content-end">
+                        <!-- <div class="col-12 col-lg-auto">
                             map   
-                        </div>
+                        </div> -->
                         <div class="col-12 col-lg-auto">
                             <p>
-                                شیراز، خیابان مطهری، جنب مسجد کبود
-کوچه هفتم، پلاک 19
+                                {{ i.text }}
                             </p>
                             <p>
                                 <b>
-                                    تلفن: (272) 211-7370
+                                    تلفن: {{ i.phone }}
+                                </b>
+                            </p>
+                            <p>
+                                <b>
+                                    فکس: {{ i.fax }}
                                 </b>
                             </p>
                         </div>
                     </li>
+                    
                     <li>
-                        <a data-url="out" data-lang="en" href="">info@mahyapardazyazd.com</a>
+                        <a data-url="out" data-lang="en" href="">
+                            {{ email }}
+                        </a>
                         :ایمیل
                     </li>
                     <li class="d-flex justify-content-end">
@@ -64,13 +87,13 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-lg-1 col-12 d-flex px-5 px-lg-0 flex-wrap justify-content-end footer-menu">
+            <div class="col-lg-1 col-12 d-flex px-5 px-lg-0 flex-wrap justify-content-end align-self-start footer-menu">
                 <h2>
                     دسترسی سریع
                 </h2>
                 <ul>
                     <li>
-                        <nuxt-link to="">
+                        <nuxt-link to="/">
                             صفحه اصلی
                             <ChevronLeftIcon style="width: 20px; position: relative; top: 7px;" />
                         </nuxt-link>
@@ -102,20 +125,20 @@
                 </ul>
             </div>
             <div class="col-lg-4 col-12 px-5 d-flex flex-wrap justify-content-end align-self-md-start">
-                <Logo title="محیاپرداز یزد" logo-src="https://pi4.ir/hesdesign/html/beapp/beapp/assets/images/logo-dark.svg" />
-                <p>
-                    حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
+                <Logo :title="seo_title" logo-src="./MahyaPardazYazd.png" />
+                <p class="d-block w-100">
+                    {{ seo_description }}
                 </p>
             </div>
         </div>
         <div class="row">
-            <div class="col-12 px-5">
-                <hr style="border: 1px solid rgba(0, 0, 0, 0.05);">
+            <hr style="border: 1px solid rgba(0, 0, 0, 0.05);">
                 <p class="text-center my-3">
                     @ تمامی حقوق مادی و معنوی سایت متعلق به شرکت محیاپرداز یزد می باشد
                 </p>
             </div>
         </div>
+            <div class="col-12 px-5">
     </div>
 </template>
 

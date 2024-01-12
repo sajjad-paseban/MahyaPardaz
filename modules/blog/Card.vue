@@ -52,6 +52,8 @@
             direction: rtl;
             position: relative;
             bottom: 20px;
+            min-height: 80px;
+            max-height: 220px;
             padding: 0 17px;
             text-align: justify;
         }

@@ -14,14 +14,12 @@
         <div class="row">
             <div class="col">
                 <p class="text-center px-5 px-md-0" style="margin-bottom: 90px;">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                    اخبار محیاپرداز یزد، رویدادها و اتفاقات مرتبط با روزرسانی نرم افزار ها
                 </p>
             </div>
         </div>
         <div class="row justify-content-center">
-            <BlogCard title="آموزش لاراول - فصل اول" description="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است." img-src="https://static.roocket.ir/images/cover/2023/12/16/5bXkwppbwaAIC7LQPqkfr9MSFjkA04NixdFNVwZu.jpg" />
-            <BlogCard title="آموزش لاراول - فصل اول" description="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است." img-src="https://static.roocket.ir/images/cover/2023/12/16/5bXkwppbwaAIC7LQPqkfr9MSFjkA04NixdFNVwZu.jpg" />
-            <BlogCard title="آموزش لاراول - فصل اول" description="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است." img-src="https://static.roocket.ir/images/cover/2023/12/16/5bXkwppbwaAIC7LQPqkfr9MSFjkA04NixdFNVwZu.jpg" />
+            <slot />
         </div>
         <div class="row justify-content-center my-5">
             <div class="col-auto">

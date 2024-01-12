@@ -54,7 +54,6 @@ export default defineComponent({
                 Toast.fire({title: res.data.message, icon:"success"})
                 resetForm()
             }else{
-                Toast.fire({title: res.data.message, icon: 'error'})
                 this.form.errors = res.data.errors
             }
 

@@ -32,7 +32,7 @@
             },
             handleNumber(e){
                 let persianNumbers = ["۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "۰"]
-                let normalNumbers = ["1","2","3","4","5","6","7","8","9","0"]
+                let normalNumbers = ["1","2","3","4","5","6","7","8","9","0","-"]
                 if(!(normalNumbers.includes(e.key) || persianNumbers.includes(e.key)))
                     e.preventDefault()
 
@@ -47,7 +47,7 @@
             {{ label }}
         </label>
     </div>
-    <Field type="text" @keypress="handleNumber" @input="handleModel" :value="value" class="d-block mt-1" :name="name" :id="id"  :data-lang="dataLang" :placeholder="placeholder" />
+    <Field type="text" @keypress="handleNumber" @input="handleModel" v-model="value" class="d-block mt-1" :name="name" :id="id"  :data-lang="dataLang" :placeholder="placeholder" />
     
 </template>
 

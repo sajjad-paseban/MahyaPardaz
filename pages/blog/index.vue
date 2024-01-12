@@ -1,18 +1,40 @@
 <script>
-    definePageMeta({
-        layout: 'page'
-    })
 
     import PageBanner from '@/modules/page-banner/Component.vue'
     import BlogCard from '@/modules/blog/Card.vue'
     import BtnRound from '@/components/BtnRound.vue'
+    import { get_blogs } from '@/services/blog.service'
+    import { api_base_url, messages } from '~/helpers/function'
+    import { ToastMessage } from '~/helpers/enum'
     export default defineComponent({
         name: 'blog',
+        data(){
+            return {
+                api_base_url: api_base_url(),
+                blogs: []
+            }
+        },
         components: {
             PageBanner,
             BlogCard,
             BtnRound
-        }    
+        },
+        beforeCreate: function(){
+            definePageMeta({
+                layout: 'page'
+            })
+
+            useHead({
+                title: 'بلاگ'
+            })
+        },
+        beforeMount: async function(){
+            const res = await get_blogs().then(res => res)
+            if(res && res.status == 200)
+                this.blogs = res.data.entities.posts
+            else
+                messages(ToastMessage.ServerError)
+        }
     })
 </script>
 
@@ -38,11 +60,11 @@
             </div>
             <div class="col-lg-6 col-12 d-flex flex-wrap justify-content-center my-5">
                 <BlogCard
-                    v-for="i in 4"
-                    :key="i" 
-                    title="آموزش لاراول - فصل اول" 
-                    description="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است." 
-                    img-src="https://static.roocket.ir/images/cover/2023/12/16/5bXkwppbwaAIC7LQPqkfr9MSFjkA04NixdFNVwZu.jpg" 
+                    v-for="(i, index) in blogs" :key="index"
+                    :title="i.title"
+                    :description="i.short_description" 
+                    :img-src="api_base_url + i.image" 
+                    :to="'/blog/'+i.slug"
                     />
             </div>
         </div>

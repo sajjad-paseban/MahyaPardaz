@@ -1,21 +1,34 @@
-<script setup>
-    import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/solid'
-    const clients = ref([
-        {src: '1200px-Bandar_Abbas_government_logo.svg.png', title: 'شهرداری بندرعباس'},
-        {src: '56-.png', title: 'شهرداری تربت جام'},
-        {src: 'Mashhad_government_logo.svg', title: 'شهرداری مشهد'},
-    ])
-    const img_pos = ref(0);
+<script>
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/solid'
+import { api_base_url as apiBaseUrl } from '~/helpers/function';
 
-    const image_changer = (flag) => {
-        if(flag === false && !(img_pos.value <= 0)){
-            img_pos.value -= 1
+    export default defineComponent({
+        name: 'client-section',
+        components: {
+            ChevronLeftIcon,
+            ChevronRightIcon
+        },
+        data(){
+            return {
+                img_pos: 0,
+                api_base_url: apiBaseUrl()
+            }
+        },
+        props: ['data'],
+        methods: {
+            image_changer(flag){
+                if(flag === false && !(this.img_pos <= 0)){
+                    this.img_pos -= 1
+                }
+                
+                if(flag === true && !(this.img_pos >= this.data.length - 1)){
+                    this.img_pos += 1
+                }
+            }
         }
         
-        if(flag === true && !(img_pos.value >= clients.value.length)){
-            img_pos.value += 1
-        }
-    }
+    })
+
 </script>
 
 <template>
@@ -25,8 +38,8 @@
                 <ChevronLeftIcon @click="image_changer(false)" class="h-3 mx-5 slider" />
             </div>
             <div class="col-auto text-center align-self-center">
-                <img :src="'/_nuxt/assets/images/client/'+clients[img_pos].src" width="60" alt="">
-                <h3>{{ clients[img_pos].title }}</h3>
+                <img :src="api_base_url + data[img_pos]?.image" width="60" alt="">
+                <h3>{{ data[img_pos]?.title }}</h3>
             </div>
             <div class="col-auto align-self-center">
                 <ChevronRightIcon @click="image_changer(true)" class="h-3 mx-5 slider" />

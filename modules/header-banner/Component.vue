@@ -1,5 +1,14 @@
 <script setup>
     import { ref } from 'vue'
+    import { getBaseInfo } from '~/helpers/function'
+    const banner_title = ref(null)
+    const banner_description = ref(null)
+
+    onBeforeMount(() => {
+        banner_title.value = getBaseInfo().banner_title
+        banner_description.value = getBaseInfo().banner_description
+    })
+    
     const icons = ref([
         'web.png',
         'laptop.png',
@@ -22,15 +31,12 @@
             </div>
             <div class="bg-main-intro">
                 <h1>
-                    توسعه اپلیکیشن موبایل
-                </h1>
-                <h1>
-                    از ایده تا اجرا
+                    {{ banner_title }}
                 </h1>
                 <p>
-                    اپلیکیشن موبایل یک ابزار اطلاعاتی به حساب می آید. اگر تعداد مشخصی مشتری ثابت دارید. اگر به دنبال افراد وفادار به کسب و کار خود هستید. اگر خدماتی انحصاری ارایه میدهید. اگر قصد ساخت ابزاری کاربردی دارید و…
+                    {{ banner_description }}
                 </p>
-                <BtnRound title="نمونه کارهای ما" :is-submit="false" />
+                <BtnRound to="/project" title="نمونه کارهای ما" :is-submit="false" />
             </div>
         </div>
         <img src="@/assets/images/background/rtl-bg-bottom.svg" alt="">

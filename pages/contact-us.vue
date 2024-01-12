@@ -6,7 +6,11 @@
     })
 
     export default defineComponent({
-        name: 'contact-us',
+        name: 'contact-us',setup(){
+            useHead({
+                title: 'ارتباط با ما'
+            })
+        },
         data(){
             return {
 

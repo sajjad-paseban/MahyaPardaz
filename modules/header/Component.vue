@@ -2,6 +2,7 @@
     import HeaderMenu from '../header/HeaderMenu.vue' 
     import Logo from '../header/Logo.vue'
     import { defineComponent } from 'vue'
+import { getBaseInfo } from '~/helpers/function'
     
     export default defineComponent({
         name: 'HeaderModule',
@@ -11,8 +12,12 @@
         },
         data(){
             return {
-                transparent: true
+                transparent: true,
+                seo_title: null
             }
+        },
+        beforeMount(){
+            this.seo_title = getBaseInfo().seo_title 
         },
         mounted() {
             window.addEventListener('scroll', () => {
@@ -28,7 +33,7 @@
 <template>
     <header class="header-top" :class="[transparent ? 'transparent' : '']">
         <HeaderMenu :transparent="transparent"/>
-        <Logo :transparent="transparent" logo-src="https://pi4.ir/hesdesign/html/beapp/beapp/assets/images/logo-dark.svg" title="محیاپرداز یزد" />
+        <Logo :transparent="transparent" logo-src="./MahyaPardazYazd.png" :title="seo_title" />
     </header>
 </template>
 

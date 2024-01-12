@@ -40,7 +40,7 @@
             {{ label }}
         </label>
     </div>
-    <Field type="text" @input="handleModel" :value="value" class="d-block mt-1" :name="name" :id="id"  :data-lang="dataLang" :placeholder="placeholder" />
+    <Field type="text" @input="handleModel" v-model="value" class="d-block mt-1" :name="name" :id="id"  :data-lang="dataLang" :placeholder="placeholder" />
     
 </template>
 

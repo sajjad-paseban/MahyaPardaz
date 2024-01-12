@@ -36,7 +36,7 @@
             {{ label }}
         </label>
     </div>
-    <input type="password" @input="handleModel" :value="value" class="d-block mt-1" :name="name" :id="id"  :data-lang="dataLang" :placeholder="placeholder">
+    <input type="password" @input="handleModel" v-model="value" class="d-block mt-1" :name="name" :id="id"  :data-lang="dataLang" :placeholder="placeholder">
     
 </template>
 

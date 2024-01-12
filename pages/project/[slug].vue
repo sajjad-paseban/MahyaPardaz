@@ -1,30 +1,39 @@
 <script>
-    definePageMeta({
-        layout: 'page'
-    })
+
 
     import PageBanner from '@/modules/page-banner/Component.vue'
     import { DocumentTextIcon } from '@heroicons/vue/24/solid'
+    import { api_base_url } from '~/helpers/function'
+    import { get_project } from '~/services/project.service'
+    
     export default defineComponent({
         name: 'project-detail',
         components: {
             PageBanner,
             DocumentTextIcon
         },
+        setup(){
+            definePageMeta({
+                layout: 'page',
+                middleware: ["not-found-request-project"]
+            })
+        },
         data(){
             return {
-                param: null
+                api_base_url: api_base_url(),
+                project: null
             }
         },
-        mounted: function(){
+        beforeMount: async function(){
             const route = useRoute()
-            this.param = route.params.slug
+            const res = await get_project(route.params.slug).then(res => res)
+            this.project = res.data.entities.product
         }
     })
 </script>
 
 <template>
-    <PageBanner :title="param" />
+    <PageBanner :title="project?.title" />
     <div class="project-detail">
         <div class="row rounded shadow shadow-md">
             <div class="col-12">
@@ -35,11 +44,11 @@
                     <div class="col-lg-auto col-12 py-3 d-flex flex-wrap flex-lg-nowrap justify-content-center flex-column-reverse flex-md-row">
                         <div class="mx-3">
                             <span class="project-detail-title d-block">
-                                تست نرم افزار
+                                {{ project?.title }}
                             </span>
                             <BtnRound is-block="true" title="پیش نمایش" :to="''" :is-primary="true" />
                         </div>
-                        <img src="https://www.landa-sme.ir/images/front/homepage-img-1.png" alt="">
+                        <img :src="api_base_url + project?.image" alt="">
                     </div>
                 </div>
 
@@ -52,10 +61,8 @@
                     </div>
                     <div class="col-12">
                         <p>
-                            اپلیکیشن پوریس یک اپلیکیشن مدرن و فارسی با طراحی جذاب و رنگ بندی مناسب برای ساخت اپلیکشن سفارش غذا است، که به صورت قابل ویرایش در نرم افزار ادوبی می باشد. اپلیکیشن پوریس در رنگ های بسیار جذاب طراحی شده است که در صورت نیاز می توان به رنگ های دیگری تغییر داده و یا رنگ های جدیدی اضافه کنید.
-
-اپلیکیشن پوریس یک اپلیکشن حرفه ای برای طراحی یک وب سایت سفارش غذا است. قابل ویرایش بودن آن به شما کمک می کند تغییرات لازم را در ایکس دی به راحتی ایجاد کنید. ظاهر جذاب و کاربر پسند اپلیکیشن، کاربران سایت شما را راضی نگه خواهد داشت. اپلیکیشن پوریس یکی از حرفه ای ترین و زیباترین اپلیکیشن های سفارش غذا می باشد
-                        </p>    
+                            {{ project?.short_description }}
+                        </p>
                     </div>
                 </div>
 
@@ -66,13 +73,7 @@
                         </h2>
                         <DocumentTextIcon class="h-3" style="fill: #4886FF"/>
                     </div>
-                    <div class="col-12 d-flex justify-content-center flex-wrap">
-                        <img src="https://pi4.ir/hesdesign/html/beapp/beapp/assets/images/mockup/3.jpg" alt="">
-                        <img src="https://www.zoho.com/books/windows10-page/header-1x.png" alt="">
-                        <img src="https://www.zoho.com/books/windows10-page/header-1x.png" alt="">
-                        <img src="https://pi4.ir/hesdesign/html/beapp/beapp/assets/images/mockup/3.jpg" alt="">
-                        <img src="https://www.zoho.com/books/windows10-page/header-1x.png" alt="">
-                        <img src="https://pi4.ir/hesdesign/html/beapp/beapp/assets/images/mockup/3.jpg" alt="">
+                    <div v-html="project?.content" class="col-12 pb-4 d-flex justify-content-center flex-wrap">
                     </div>
                 </div>
             </div>
