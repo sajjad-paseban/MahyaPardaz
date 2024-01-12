@@ -44,7 +44,6 @@ export default defineComponent({
                     toast.onmouseleave = Swal.resumeTimer;
                 }
             })
-            console.log(res)
             if(res.status == 201){
                 Toast.fire({title: res.data.message, icon:"success"})
                 resetForm()
