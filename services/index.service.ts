@@ -42,3 +42,33 @@ export const edit_base_info = async(form?:any)=>{
         return res.response
     }
 }
+
+export const login = async(form?:any)=>{
+    try{
+        const res = await axios.post<any>(api_base_url('api/login'), form, {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-Requested-With": "XMLHttpRequest"
+            }
+        })
+        return res
+    }catch(res: any){
+        return res.response
+    }
+}
+
+export const logout = async(form?:any)=>{
+    // try{
+    //     const res = await axios.put<any>(api_base_url('api/login'), form, {
+    //         headers: {
+    //             "Accept": "application/json",
+    //             "Content-Type": "application/x-www-form-urlencoded",
+    //             "X-Requested-With": "XMLHttpRequest"
+    //         }
+    //     })
+    //     return res
+    // }catch(res: any){
+    //     return res.response
+    // }
+}
