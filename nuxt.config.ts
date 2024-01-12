@@ -22,7 +22,8 @@ export default defineNuxtConfig({
         {rel: 'icon' , href: "/MahyaPardazYazd.png"},
       ],
       script: [
-        { src: '/tinymce/tinymce.min.js' }
+        { src: '/tinymce/tinymce.min.js' },
+        { src: '/bootstrap/bootstrap.min.js' }
       ]
     }
   },
