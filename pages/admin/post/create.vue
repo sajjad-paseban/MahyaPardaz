@@ -1,18 +1,37 @@
 <script>
 import Card from '@/components/Card.vue'
+import Modal from '@/components/Modal.vue'
 import PostCreateForm from '@/forms/post/create.form.vue'
+import UploadMediaForm from '@/forms/post/upload-media.form.vue'
 export default defineComponent({
     name: 'PostCreatePage',
     components:{
         Card,
-        PostCreateForm
+        Modal,
+        PostCreateForm,
+        UploadMediaForm
     },
     data(){
         return {
+            uploadFileModal:{
+                buttons: [
+                    {
+                        title: 'بستن',
+                        onClick: () => this.uploadFileModal.showModal = false
+                    }
+                ],
+                title: 'آپلود فایل',
+                showModal: false    
+            },
+
             buttons: [
                 {
                     title: 'برگشت',
                     link: '/admin/post'
+                },
+                {
+                    title: 'آپلود فایل',
+                    onClick: () => this.uploadFileModal.showModal = true
                 }
             ]
         }
@@ -40,4 +59,7 @@ export default defineComponent({
             </Card>
         </div>
     </div>
+    <Modal v-if="uploadFileModal.showModal" :title="uploadFileModal.title" :buttons="uploadFileModal.buttons">
+        <UploadMediaForm />
+    </Modal>
 </template>
