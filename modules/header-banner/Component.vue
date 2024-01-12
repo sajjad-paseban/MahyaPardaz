@@ -105,6 +105,7 @@
                 p{
                     font-family: 'sans';
                     font-size: 14px;
+                    line-height: 2;
                     direction: rtl;
                     text-align: justify;
                 }                
