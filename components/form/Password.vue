@@ -1,5 +1,6 @@
 <script>
-    export default defineComponent({
+import { Field } from 'vee-validate'
+export default defineComponent({
         name: 'InputFromComponent',
         props: {
             label:{
@@ -26,6 +27,9 @@
             handleModel(e){
                 this.$emit('model', e.target.value)
             }
+        },
+        components: {
+            Field
         }
     })
 </script>
@@ -36,7 +40,7 @@
             {{ label }}
         </label>
     </div>
-    <input type="password" @input="handleModel" v-model="value" class="d-block mt-1" :name="name" :id="id"  :data-lang="dataLang" :placeholder="placeholder">
+    <Field type="password" @input="handleModel" v-model="value" class="d-block mt-1" :name="name" :id="id"  :data-lang="dataLang" :placeholder="placeholder" />
     
 </template>
 
