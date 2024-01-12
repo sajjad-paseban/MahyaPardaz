@@ -27,7 +27,7 @@ export default defineComponent({
     <div className="x-card" :style="{width: width}">
         <div v-if="title" class="x-card-header" :class="{'without-border': headerBordering}">
             <div>
-                <nuxt-link class="button-8" role="button" style="margin-right: '3px';" :to="value.link" v-for="(value, index) in buttons" :key="index">
+                <nuxt-link class="button-8 mx-1" role="button" :to="value.link" v-for="(value, index) in buttons" @click="value.onClick" :key="index">
                     {{ value.title }}
                 </nuxt-link>
             </div>
