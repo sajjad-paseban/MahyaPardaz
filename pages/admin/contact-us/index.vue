@@ -31,7 +31,7 @@ export default defineComponent({
     </div>
     <div class="custom-row justify-content-center">
         <div class="col-10">
-            <Card :headerBordering="false" :buttons="buttons" :title="'لیست تماس با ما'">
+            <Card :headerBordering="false" :buttons="buttons" :title="'لیست ارتباط با ما'">
                 <ContactUsDataGrid />
             </Card>
         </div>
