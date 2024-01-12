@@ -33,7 +33,7 @@ export default defineComponent({
                 <span>
                     سجاد پاسبان
                 </span>
-                <img src="https://alpachinof.github.io/vuelet/avatar.jpg" alt="">
+                <img src="/image/default-profile-logo.png" alt="">
                 <div class="profile-item-dropdown">
                     <div class="profile-item-dropdown-cover">
                         <ul>
@@ -168,6 +168,8 @@ export default defineComponent({
                     img{
                         width: 40px;
                         height: 40px;
+                        position: relative;
+                        top: 2px;
                         object-fit: cover;
                         object-position: center center;
                         border-radius: 50px;
