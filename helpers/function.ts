@@ -2,7 +2,7 @@ import { ToastMessage } from './enum';
 import Swal from "sweetalert2";
 
 export function base_url(path?:string):string{
-    return "" + path
+    return "https://mahyapardaz.ir/" + path
 }
 
 export function api_base_url(path:string = ""):string{
