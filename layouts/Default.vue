@@ -9,13 +9,13 @@
     import { ToastMessage } from '~/helpers/enum'
 
     const router = useRouter()
-    const keywords = ref(null)
+    const keywords = ref([])
     const res = await base_info().then(res => res)
 
     if(res && res.status == 200){
         
         res.data.entities.base_info.keywords.map((value, index)=>{
-            keywords.value +=  value.title + ','
+            keywords.value.push(value.title)
         })
         
         useHead({
@@ -27,7 +27,7 @@
                 },
                 {
                     name: 'keywords',
-                    content: keywords
+                    content: keywords.value.join(',')
                 },
                 {
                     property: 'og:title',

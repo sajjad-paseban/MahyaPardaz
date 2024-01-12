@@ -3,7 +3,7 @@
 
     import PageBanner from '@/modules/page-banner/Component.vue'
     import { DocumentTextIcon } from '@heroicons/vue/24/solid'
-    import { api_base_url } from '~/helpers/function'
+    import { api_base_url, base_url } from '~/helpers/function'
     import { get_project } from '~/services/project.service'
     
     export default defineComponent({
@@ -12,23 +12,35 @@
             PageBanner,
             DocumentTextIcon
         },
-        setup(){
+        async setup(){
+            
+            const route = useRoute()
+            const res = await get_project(route.params.slug).then(res => res)
+
             definePageMeta({
                 layout: 'page',
                 middleware: ["not-found-request-project"]
             })
+            
+            useServerSeoMeta({
+                ogTitle: res.data.entities.product.title,
+                ogDescription: res.data.entities.product.short_description,
+                ogUrl: base_url('project/'+res.data.entities.product.slug), 
+                ogImage: api_base_url(res.data.entities.product.image),
+                title: res.data.entities.product.title,
+                description: res.data.entities.product.short_description,
+            })
+
+            return {
+                project: res.data.entities.product
+            }
+        
         },
         data(){
             return {
                 api_base_url: api_base_url(),
-                project: null
             }
         },
-        beforeMount: async function(){
-            const route = useRoute()
-            const res = await get_project(route.params.slug).then(res => res)
-            this.project = res.data.entities.product
-        }
     })
 </script>
 

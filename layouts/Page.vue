@@ -13,14 +13,16 @@
             const res = await base_info().then(res => res)
             if(!(res && res.status == 200))
                 messages(ToastMessage.ServerError)
-                        
+                
+                
+            let keywords: any[] = []
+            res.data.entities.base_info.keywords.map((value: any, index: any)=>{
+                keywords.push(value.title)
+            })
+          
             return {
+                keywords: keywords,
                 base_info: res.data.entities.base_info
-            }
-        },
-        data(){
-            return {
-                keywords: ''
             }
         },
         components: {
@@ -28,10 +30,7 @@
             Footer
         },
         beforeCreate(){
-            this.base_info.keywords.map((value: any, index: any)=>{
-                this.keywords +=  value.title + ','
-            })
-
+            
             useHead({
                 titleTemplate: '%s - ' + this.base_info.seo_title,
                 meta: [
@@ -41,7 +40,7 @@
                 },
                 {
                     name: 'keywords',
-                    content: this.keywords
+                    content: this.keywords.join(',')
                 },
                 {
                     property: 'og:title',

@@ -1,9 +1,11 @@
 <script>
 import { ChevronDownIcon, GlobeAltIcon, EllipsisVerticalIcon, XMarkIcon, ArrowLeftStartOnRectangleIcon, AdjustmentsHorizontalIcon } from '@heroicons/vue/16/solid'
+import { getBaseInfo } from '~/helpers/function'
 export default defineComponent({
     name: 'HeaderAdminComponent',
     data(){
         return {
+            username: null,
             showSideBar: false
         }
     },
@@ -20,6 +22,10 @@ export default defineComponent({
         XMarkIcon,
         ArrowLeftStartOnRectangleIcon,
         AdjustmentsHorizontalIcon,
+    },
+    mounted(){
+        console.log(getBaseInfo())
+        this.username = getBaseInfo().seo_title
     }
 })
 </script>
@@ -31,7 +37,7 @@ export default defineComponent({
             <li class="profile-item">
                 <ChevronDownIcon style="width: 22px; position: relative; bottom: 5px" />
                 <span>
-                    سجاد پاسبان
+                    {{ username }}
                 </span>
                 <img src="/image/default-profile-logo.png" alt="">
                 <div class="profile-item-dropdown">
@@ -54,7 +60,7 @@ export default defineComponent({
                                 </a>
                             </li>
                             <li>
-                                <nuxt-link to="/admin/logout">
+                                <nuxt-link to="/logout">
                                     <ArrowLeftStartOnRectangleIcon />
                                     <b>
                                         خروج از سایت

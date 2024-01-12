@@ -6,14 +6,37 @@
     import EitaIcon from '../../assets/svg/EitaIcon.vue'
     import PageBanner from '@/modules/page-banner/Component.vue'
     import { get_blog } from '~/services/blog.service'
-    import { api_base_url } from '~/helpers/function'
+    import { api_base_url, base_url } from '~/helpers/function'
     
     export default defineComponent({
         name: 'blog-detail',
+        async setup(){
+            
+            const route = useRoute()
+            const res = await get_blog(route.params.slug).then(res => res)
+            
+            definePageMeta({
+                layout: 'page',
+                middleware: ['not-found-request-blog']
+            })
+            
+            
+            useServerSeoMeta({
+                ogTitle: res.data.entities.post.title,
+                ogDescription: res.data.entities.post.short_description,
+                ogUrl: base_url('blog/'+res.data.entities.post.slug), 
+                ogImage: api_base_url(res.data.entities.post.image),
+                title: res.data.entities.post.title,
+                description: res.data.entities.post.short_description,
+            })
+            
+            return {
+                blog: res.data.entities.post
+            }
+        },
         data(){
             return {
                 api_base_url: api_base_url(),
-                blog: null
             }
         },
         components: {
@@ -23,16 +46,6 @@
             LinkedinIcon,
             GmailIcon,
             EitaIcon,
-        },
-        beforeCreate: async function(){
-            definePageMeta({
-                layout: 'page',
-                middleware: ['not-found-request-blog']
-            })
-            
-            const route = useRoute()
-            const res = await get_blog(route.params.slug).then(res => res)
-            this.blog = res.data.entities.post
         }
     })
 </script>
