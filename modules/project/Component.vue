@@ -1,4 +1,6 @@
 <script>
+import { string } from "yup";
+
     export default defineComponent({
         name: "ProjectModule",
         props: {
@@ -9,24 +11,38 @@
             showHeader: {
                 type: Boolean,
                 default: true
-            }
+            },
+            showMainHeader: {
+                type: Boolean,
+                default: false
+            },
+            title:{
+                type: String
+            },
+            description:{
+                type: String
+            }            
         }
     })    
 </script>
 
 <template>
-    <div class="project-section py-5">
+    <div class="project-section pt-2 pb-4">
         <div class="row" v-if="showHeader">
             <div class="col text-center">
+                <h2 v-if="showMainHeader" class="text-center display-6 border-bottom pb-3">
+                    محصولات ما
+                </h2>
+                <br>
                 <h2>
-                    پروژه های ما
+                    {{ title }}
                 </h2>
             </div>
         </div>
         <div class="row" v-if="showHeader">
             <div class="col text-center">
                 <p class="px-5">
-                    خدمات و محصولات این شرکت پس از دو دهه فعالیت، در بیش از 150 پروژه در شهرهای مختلف کشور شامل شهرداری ها و سایر نهادهای خدمات شهری مورد استفاده قرار گرفته و به مرحله اجرا رسیده است
+                    {{ description }}
                 </p>
             </div>
         </div>
@@ -43,10 +59,13 @@
 
 <style scoped lang="scss">
     .project-section{
-        background-color: rgba(244, 248, 251, 0.8);
+        background-color: rgba($color: #EFF0E9, $alpha: 0.5);
         font-family: 'yekan';
         width: 100%;
         overflow: hidden;
         color: #3B566E;
+        p{
+            font-size: 18px;
+        }
     }
 </style>

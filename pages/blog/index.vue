@@ -81,7 +81,7 @@
             text-align: justify;
             border-radius: 4px;
             line-height: 1.5;
-            background-image: linear-gradient(127deg, #384DFF 0%, #24CDFF 91%);
+            background-image: linear-gradient(127deg, #384DFF 0%, #579BE9 91%);
             color: #fff;
             font-family: 'vazir';
             padding: 30px;
@@ -97,7 +97,7 @@
             border-radius: 4px;
             a.tag-badge{
                 color: #6F8BA4;
-                background-color: #F4F8FB;
+                background-color: #DCE9F8;
                 padding: 5px 8px;
                 margin: 3px;
                 font-size: 13px;

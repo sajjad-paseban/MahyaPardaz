@@ -74,17 +74,8 @@ export default defineComponent({
 
 <template>
     <Form :validation-schema="form.schema" @submit="handleSubmit" class="my-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-auto col-12 px-5 py-2 py-lg-0 px-lg-2">
-                <Number @model="val => form.params.mobile = val" :value="form.params.mobile" label="شماره همراه" :dataLang="'fa'" name="mobile" id="mobile" />
-                <div class="d-flex justify-content-end">
-                    <ErrorMessage class="text-danger" name="mobile" />
-                    <span style="direction: rtl;font-size: 12px;" class="text-danger" v-if="form.errors?.mobile">
-                        {{ form.errors?.mobile[0] }}
-                    </span>
-                </div>
-            </div>
-            <div class="col-lg-auto col-12 px-5 py-2 py-lg-0 px-lg-2">
+        <div class="row justify-content-center my-1">
+            <div class="col-lg-3 col-12 px-5 py-2 py-lg-0 px-lg-2">
                 <Input @model="val => form.params.full_name = val" :value="form.params.full_name" label="نام و نام خانوادگی" :dataLang="'fa'" name="full_name" id="full_name" />
                 <div class="d-flex justify-content-end">
                     <ErrorMessage class="text-danger" name="full_name" />
@@ -94,8 +85,19 @@ export default defineComponent({
                 </div>
             </div>
         </div>
-        <div class="row mt-2 justify-content-center">
-            <div class="col-lg-3 col-12 px-5 py-2 py-lg-0 px-lg-3">
+        <div class="row justify-content-center my-1">
+            <div class="col-lg-3 col-12 px-5 py-2 py-lg-0 px-lg-2">
+                <Number @model="val => form.params.mobile = val" :value="form.params.mobile" label="شماره همراه" :dataLang="'fa'" name="mobile" id="mobile" />
+                <div class="d-flex justify-content-end">
+                    <ErrorMessage class="text-danger" name="mobile" />
+                    <span style="direction: rtl;font-size: 12px;" class="text-danger" v-if="form.errors?.mobile">
+                        {{ form.errors?.mobile[0] }}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2 justify-content-center my-1">
+            <div class="col-lg-3 col-12 px-5 py-2 py-lg-0 px-lg-2">
                 <Textarea @model="val => form.params.description = val" :value="form.params.description" label="توضیحات" :dataLang="'fa'" name="description" id="description" />
                 <div class="d-flex justify-content-end">
                     <ErrorMessage class="text-danger" name="description" />

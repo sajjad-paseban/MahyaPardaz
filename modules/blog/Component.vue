@@ -7,14 +7,14 @@
         <div class="row">
             <div class="col text-center">
                 <h2>
-                    پست های اخیر بلاگ
+                    رویداد های ما
                 </h2>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <p class="text-center px-5 px-md-0" style="margin-bottom: 90px;">
-                    اخبار محیاپرداز یزد، رویدادها و اتفاقات مرتبط با روزرسانی نرم افزار ها
+                <p class="text-center px-5 px-md-0" style="margin-bottom: 50px;">
+                    <!-- اخبار محیاپرداز یزد، رویدادها و اتفاقات مرتبط با روزرسانی نرم افزار ها -->
                 </p>
             </div>
         </div>
@@ -34,7 +34,7 @@
         width: 100%;
         padding: 60px 0;
         overflow: hidden;
-        background-color: rgba(255, 255, 238, 0.5);
+        background-color: rgba($color: #D7E1DB, $alpha: 0.3);
         color: #3B566E;
         font-family: 'yekan';
         h2{

@@ -1,6 +1,9 @@
 <script>
 import { ChevronDownIcon, GlobeAltIcon, EllipsisVerticalIcon, XMarkIcon, ArrowLeftStartOnRectangleIcon, AdjustmentsHorizontalIcon } from '@heroicons/vue/16/solid'
-import { getBaseInfo } from '~/helpers/function'
+import { ToastMessage } from '~/helpers/enum'
+import { messages } from '~/helpers/function'
+import { logout } from '~/services/index.service'
+import { useBaseStore, useAuthStore } from '~/store'
 export default defineComponent({
     name: 'HeaderAdminComponent',
     data(){
@@ -13,6 +16,22 @@ export default defineComponent({
         toggleShowSideBar(){
             this.showSideBar = !this.showSideBar
             this.$emit('showSideBar',this.showSideBar)
+        },
+        async logout(){
+
+            const store = useAuthStore()
+
+
+            const res = await logout().then(res => res)
+
+            if(res && res.status == 200){
+
+                store.setIsAuthenticated(false)
+                store.setToken('')
+                navigateTo('/')
+            }else{
+                messages(ToastMessage.ServerError)
+            }
         }
     },
     components: {
@@ -24,9 +43,9 @@ export default defineComponent({
         AdjustmentsHorizontalIcon,
     },
     mounted(){
-        console.log(getBaseInfo())
-        this.username = getBaseInfo().seo_title
-    }
+        const baseStore = useBaseStore()
+        this.username = baseStore.baseInfo.seo_title
+    },
 })
 </script>
 
@@ -60,7 +79,7 @@ export default defineComponent({
                                 </a>
                             </li>
                             <li>
-                                <nuxt-link to="/logout">
+                                <nuxt-link @click="logout">
                                     <ArrowLeftStartOnRectangleIcon />
                                     <b>
                                         خروج از سایت
@@ -82,7 +101,7 @@ export default defineComponent({
             </li>
             <li class="d-none d-xl-block">
                 <span style="font-family: 'vazir'; position: relative; bottom: 5px;">
-                    پنل مدیریت محیا پرداز یزد
+                    پنل مدیریت {{ username }}
                 </span>
             </li>
         </ul>

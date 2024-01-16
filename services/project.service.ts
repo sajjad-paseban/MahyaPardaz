@@ -1,3 +1,4 @@
+import { useAuthStore } from '~/store';
 import { api_base_url } from '~/helpers/function';
 import axios from 'axios';
 
@@ -7,6 +8,7 @@ export const get_projects = async()=>{
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer "+ useAuthStore().token
             }
         })
         return res
@@ -21,6 +23,7 @@ export const deleteOne = async(id: number)=>{
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer "+ useAuthStore().token
             }
         })
         return res
@@ -63,7 +66,8 @@ export const create = async(form?: any)=>{
             headers: {
                 "Accept": "application/json",
                 'Content-Type': 'multipart/form-data',
-                "X-Requested-With": "XMLHttpRequest"
+                "X-Requested-With": "XMLHttpRequest",
+                "Authorization": "Bearer "+ useAuthStore().token
             }
         })
         return res
@@ -77,7 +81,6 @@ export const edit = async(form?: any)=>{
         const data = new FormData()
         data.append('_method','put')
         for(const item in form){
-            
             if(item == "keywords"){
                 form[item].split(',').map((value: any, index: any) =>{
                     data.append(item+'['+index+']', value)
@@ -92,12 +95,13 @@ export const edit = async(form?: any)=>{
 
             data.append(item,form[item])
         }
-        console.log(...data)
+
         const res = await axios.post<any>(api_base_url('api/admin/products/'+form.id), data, {
             headers: {
                 "Accept": "application/json",
                 'Content-Type': 'multipart/form-data',
-                "X-Requested-With": "XMLHttpRequest"
+                "X-Requested-With": "XMLHttpRequest",
+                "Authorization": "Bearer "+ useAuthStore().token
             }
         })
         return res
@@ -119,7 +123,8 @@ export const create_media = async(form?: any)=>{
             headers: {
                 "Accept": "application/json",
                 'Content-Type': 'multipart/form-data',
-                "X-Requested-With": "XMLHttpRequest"
+                "X-Requested-With": "XMLHttpRequest",
+                "Authorization": "Bearer "+ useAuthStore().token
             }
         })
         return res
@@ -133,6 +138,7 @@ export const get_medias = async()=>{
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer "+ useAuthStore().token
             }
         })
         return res
@@ -147,6 +153,7 @@ export const delete_media = async(id: number)=>{
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer "+ useAuthStore().token
             }
         })
         return res

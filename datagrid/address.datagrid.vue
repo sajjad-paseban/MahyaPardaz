@@ -70,7 +70,7 @@ export default defineComponent({
             </thead>
             <tbody>
                 <tr v-for="(item, index) in addresses" :key="index">
-                    <td>{{ addresses.length - index }}</td>
+                    <td>{{ index + 1 }}</td>
                     <td>{{ item.text }}</td>
                     <td>{{ item.phone }}</td>
                     <td>{{ item.fax }}</td>

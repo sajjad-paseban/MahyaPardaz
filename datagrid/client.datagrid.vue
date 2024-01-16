@@ -68,7 +68,7 @@ export default defineComponent({
             </thead>
             <tbody>
                 <tr v-for="(item, index) in clients" :key="index">
-                    <td>{{ clients.length - index }}</td>
+                    <td>{{ index + 1 }}</td>
                     <td>{{ item.title }}</td>
                     <td>
                         <img :src="api_base_url + item.image" width="25" alt="">

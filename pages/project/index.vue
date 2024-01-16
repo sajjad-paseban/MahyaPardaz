@@ -14,6 +14,8 @@
     export default defineComponent({
         name: 'Project',
         setup(){
+            navigateTo('/')
+            
             useHead({
                 title: 'پروژه های ما'
             })

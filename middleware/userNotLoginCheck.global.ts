@@ -1,12 +1,12 @@
-export default defineNuxtRouteMiddleware( (to, from) =>{
+import { useAuthStore } from "@/store"
 
-    if(process.client){
-        if(to.fullPath.includes('admin')){
-            if(!localStorage.SESS_COK){
-                location.replace('/login')
-            }
+export default defineNuxtRouteMiddleware( (to, from) =>{
+    const store = useAuthStore()
+    if(to.fullPath.includes('admin')){
+        if(!store.isAuthenticated || store.token == ''){
+            return navigateTo('/login')
         }
-        return true
     }
+    return true
 
 })

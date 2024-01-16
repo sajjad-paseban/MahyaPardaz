@@ -1,12 +1,13 @@
 <script setup>
-    
+
     import Header from '../modules/header/Component.vue'
     import Footer from '../modules/footer/Component.vue'
     import HeaderBanner from '../modules/header-banner/Component.vue'
     
     import { base_info } from '@/services/index.service'
-    import { get_clinet_url, messages, setBaseInfo } from '~/helpers/function'
+    import { get_clinet_url, messages } from '~/helpers/function'
     import { ToastMessage } from '~/helpers/enum'
+    import { useBaseStore } from '~/store'
 
     const router = useRouter()
     const keywords = ref([])
@@ -57,7 +58,8 @@
     }
     
     onBeforeMount(()=>{
-        setBaseInfo(res.data.entities.base_info)
+        const baseStore = useBaseStore()
+        baseStore.setBaseInfo(res.data.entities.base_info)
     })
 
 </script>

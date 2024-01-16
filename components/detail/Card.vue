@@ -13,14 +13,17 @@
 
 <style scoped lang="scss">
     h2{
-        font-size: 50px;
+        font-size: 35px;
         position: relative;
         right: 4px;
+    }
+    h3{
+        font-size: 18px;
     }
     .line{
         position: relative;
         left: calc(50% - 6%);
-        height: 50px;
+        height: 35px;
         width: 6px;
         background-color: #fff;
         &.line-top{

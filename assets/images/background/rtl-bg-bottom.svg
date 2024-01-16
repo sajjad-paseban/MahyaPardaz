@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="1920px" height="539px" viewBox="0 0 1920 539" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
-    <title>Path</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="bg-bottom-copy" transform="translate(960.000000, 269.500000) scale(-1, 1) translate(-960.000000, -269.500000) " fill="#FFFFFF">
-            <path d="M0,435.319226 C24.1101152,458.137941 52.0916759,475.771708 83.944682,488.220525 C104.499885,496.253927 124.673964,502.916201 140.167599,507.545764 C149.023445,510.191929 156.350176,512.174001 161.344948,513.368437 C175.078261,516.652585 189.412148,519.596528 211.331318,520.681711 C279.005773,524.032166 379.244118,499.539523 438.534456,482.668288 C478.061348,471.420797 599.29872,438.106071 802.246571,382.724109 L1040.22231,316.637464 L1711.53565,139.194033 C1742.98895,131.125379 1771.52124,120.370641 1797.13255,106.929818 C1835.5495,86.768584 1878.67312,47.723501 1887.25058,38.253299 C1892.96889,31.939831 1903.88536,19.188731 1920,0 L1920,539 L0,539 L0,435.319226 Z" id="Path"></path>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1920 539" style="enable-background:new 0 0 1920 539;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.5;fill-rule:evenodd;clip-rule:evenodd;fill:#EFF0E9;}
+</style>
+<path class="st0" d="M1920,435.3c-24.1,22.8-52.1,40.4-83.9,52.9c-20.6,8.1-40.8,14.7-56.3,19.3c-8.8,2.7-16.2,4.7-21.1,5.9
+	c-13.8,3.3-28.1,6.2-50,7.3c-67.7,3.3-167.9-21.2-227.2-38c-39.5-11.3-160.8-44.6-363.7-100l-238-66.1L208.5,139.2
+	c-31.5-8.1-60-18.8-85.6-32.3C84.5,86.8,41.3,47.7,32.7,38.3C27,32,16.1,19.2,0,0v539h1920L1920,435.3z"/>
 </svg>

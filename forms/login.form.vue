@@ -6,17 +6,19 @@ import Email from '@/components/form/Email.vue'
 import Password from '@/components/form/Password.vue'
 import { login } from '@/services/index.service'
 import Swal from 'sweetalert2'
+import { useAuthStore } from '@/store'
 export default defineComponent({
     name: 'LoginForm',
     data(){
-
+        const store = useAuthStore()
         //validation with yup
         const schema = yup.object({
             email: yup.string().required("فیلد پست الکترونیکی اجباری می باشد").email("پست الکترونیکی معتبر نمی باشد"),
             password: yup.string().required("فیلد گذرواژه اجباری می باشد")
         })
-
+        
         return {
+            store,
             form:{
                 schema,
                 params:{
@@ -29,10 +31,10 @@ export default defineComponent({
         }
     },
     methods: {
-        async handleSubmit(form, {resetForm}){
+        async handleSubmit(form){
             this.form.disable = true
             this.form.errors = null
-
+            
             const res = await login(form).then(res => res)
             
             const Toast = Swal.mixin({
@@ -48,23 +50,25 @@ export default defineComponent({
             })
             
             if(res && res.status == 200){
+
                 Toast.fire({title: res.data.message, icon:"success"})
-                resetForm()
-                localStorage.setItem('SESS_COK',JSON.stringify(
-                    {
-                        key: null,
-                        status: true
-                    }
-                ))
-                navigateTo('/admin')
-            }else{
-                this.form.errors = res.data.errors
-                Toast.fire({title: res.data.message, icon:"error"})
                 
+                this.store.setIsAuthenticated(true)
+                
+                this.store.setToken(res.data.entities.token)
+
+                navigateTo('/admin')
+            
+            }else{
+            
+                this.form.errors = res.data.errors
+                
+                Toast.fire({title: res.data.message, icon:"error"})
+            
             }
-
+            
             this.form.disable = false
-
+            
         }
     },
     components: {
@@ -78,6 +82,7 @@ export default defineComponent({
 
 <template>
     <Form :validation-schema="form.schema" @submit="handleSubmit" class="p-2">
+        
         <h2>
             ورود به سامانه مدیریت
         </h2>

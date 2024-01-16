@@ -7,6 +7,7 @@ import { defineComponent } from "vue"
 import Input from '@/components/form/Input.vue'
 import FileUpload from '@/components/form/FileUpload.vue'
 import TextArea from '@/components/form/Textarea.vue'
+import SelectBox from '@/components/form/SelectBox.vue'
 import CustomEditor from '~/editor/custom.editor.vue'
 import { create } from '@/services/project.service'
 
@@ -17,6 +18,7 @@ export default defineComponent({
         //validation with yup
         const schema = yup.object({
             title: yup.string().required("فیلد عنوان پروژه اجباری می باشد"),
+            type: yup.string().required('فیلد نوع سامانه اجباری می باشد'),
             short_description: yup.string().required("فیلد توضیحات اجباری می باشد"),
             keywords: yup.string().required("فیلد کلمات کلیدی اجباری می باشد"),
         })
@@ -26,6 +28,7 @@ export default defineComponent({
                 schema,
                 params:{
                     title: null,
+                    type: null,
                     short_description: null,
                     content: null,
                     keywords: null,
@@ -57,7 +60,6 @@ export default defineComponent({
 
             if(res.status == 201){
                 Toast.fire({title: res.data.message, icon:"success"})
-                resetForm()
                 navigateTo('/admin/project')
             }else{
                 this.form.errors = res.data.errors
@@ -71,6 +73,7 @@ export default defineComponent({
         Form,
         ErrorMessage,
         Input,
+        SelectBox,
         FileUpload,
         TextArea,
         CustomEditor
@@ -85,6 +88,17 @@ export default defineComponent({
             <ErrorMessage class="text-danger d-block" style="text-align: right;" name="title" />
             <span style="font-size: 12px;direction: rtl;" class="text-danger d-block" v-if="form.errors?.title">
                 {{ form.errors?.title[0] }}
+            </span>
+        </div>
+        <div class="form-group my-3">
+            <SelectBox @model="val => form.params.type = val" :value="form.params.type" label="نوع سامانه" :dataLang="'fa'" name="type" id="type">
+                <option default value="">یک گزینه را انتخاب نمایید</option>      
+                <option value="0">سامانه های شهرداری</option>      
+                <option value="1">سامانه های شهروندی</option>      
+            </SelectBox>
+            <ErrorMessage class="text-danger d-block" style="text-align: right;" name="type" />
+            <span style="font-size: 12px;direction: rtl;" class="text-danger d-block" v-if="form.errors?.type">
+                {{ form.errors?.type[0] }}
             </span>
         </div>
         <div class="form-group my-3">

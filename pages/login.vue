@@ -24,8 +24,8 @@ export default defineComponent({
         <div class="cover-image"></div>
         <div class="cover-smoke"></div>
     </div>
-    <div class="main d-flex flex-wrap align-items-center justify-content-end">
-        <div class="col-2 rounded-2 p-3 mx-5 bg-white">
+    <div class="main d-flex flex-wrap align-items-center justify-content-lg-end justify-content-center">
+        <div class="col-xl-2 col-lg-4 col-10 rounded-2 p-3 mx-5 bg-white">
             <LoginForm />
         </div>
     </div>

@@ -21,7 +21,7 @@
             })
             
             
-            useServerSeoMeta({
+            useSeoMeta({
                 ogTitle: res.data.entities.post.title,
                 ogDescription: res.data.entities.post.short_description,
                 ogUrl: base_url('blog/'+res.data.entities.post.slug), 
@@ -67,7 +67,7 @@
                     </nuxt-link>
                 </div>
             </div>
-            <div class="col-lg-6 col-12 my-5">
+            <div class="col-lg-7 col-12 my-5">
                 <div class="row blog-detail-header">
                     <div class="col-12">
                         <img :src="api_base_url + blog?.image" alt="">
@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="row blog-detail-content">
-                    <div class="col-12" v-html="blog?.content">
+                    <div class="col-12 content" v-html="blog?.content">
                         
                     </div>
                 </div>
@@ -89,7 +89,7 @@
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
     .blog-detail{
         overflow: hidden;
         .contact-us-card{
@@ -99,7 +99,7 @@
             text-align: justify;
             border-radius: 4px;
             line-height: 1.5;
-            background-image: linear-gradient(127deg, #384DFF 0%, #24CDFF 91%);
+            background-image: linear-gradient(127deg, #384DFF 0%, #579BE9 91%);
             color: #fff;
             font-family: 'vazir';
             padding: 30px;
@@ -131,6 +131,7 @@
                 object-position: center center;
                 max-height: 500px;
                 border-radius: 5px;
+                box-shadow: 1px 1px 5px rgba($color: #000, $alpha: 0.1);
             }
             span{
                 color: rgb(72, 134, 255);
@@ -142,8 +143,11 @@
                 user-select: none;
 
             }
+            border-bottom: 1px solid rgba($color: #000, $alpha: 0.08);
         }
-
+        p{
+            text-align: center !important;
+        }
         .blog-detail-content{
             direction: rtl;
             span,p{
@@ -151,6 +155,24 @@
                 font-size: 17px;
                 text-align: justify !important;
                 color: #6F8BA4;
+            }
+            .content{
+                img{
+                    min-width: 200px;
+                    max-width: 100% !important;
+                    min-height: 200px;
+                    max-height: 100%;
+                    object-fit: fill;
+                    display: block !important;
+                    border-radius: 4px;
+                    box-shadow: 1px 1px 5px rgba($color: #000, $alpha: 0.1);
+                }
+
+                p,div{
+                    direction: rtl;
+                    display: block;
+                }
+
             }
         }
     }

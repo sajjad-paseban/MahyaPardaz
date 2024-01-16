@@ -2,21 +2,13 @@
     import { defineComponent } from 'vue'
     import Logo from '../header/Logo.vue'
     import { ChevronLeftIcon } from '@heroicons/vue/16/solid'
-    import FacebookIcon from '../../assets/svg/FacebookIcon.vue'
-    import LinkedinIcon from '../../assets/svg/LinkedinIcon.vue'
-    import GmailIcon from '../../assets/svg/GmailIcon.vue'
-    import EitaIcon from '../../assets/svg/EitaIcon.vue'
-    import { getBaseInfo } from '~/helpers/function'
     import { get_addresses } from '@/services/address.service'
+    import { useBaseStore } from '~/store'
     export default defineComponent({
         name: 'FooterModule',
         components:{
             Logo,
             ChevronLeftIcon,
-            FacebookIcon,
-            LinkedinIcon,
-            GmailIcon,
-            EitaIcon,
         },
         data(){
             return {
@@ -27,10 +19,11 @@
             }
         },
         async beforeMount(){
+            const baseStore = useBaseStore()
             const res = await get_addresses().then(res => res)
-            this.seo_title = getBaseInfo().seo_title
-            this.seo_description = getBaseInfo().seo_description
-            this.email = getBaseInfo().email
+            this.seo_title = baseStore.baseInfo.seo_title
+            this.seo_description = baseStore.baseInfo.seo_description
+            this.email = baseStore.baseInfo.email
             this.addresses = res.data.entities.addresses
         }
     })
@@ -71,20 +64,6 @@
                         </a>
                         :ایمیل
                     </li>
-                    <li class="d-flex justify-content-end">
-                        <a href="">
-                            <EitaIcon style="width: 24px; margin-right: 6px;position: relative;top: 38px;" />
-                        </a>
-                        <a href="">
-                            <GmailIcon style="width: 23.5px; margin-right: 4px;" />
-                        </a>
-                        <a href="">
-                            <LinkedinIcon style="width: 28px;" />
-                        </a>
-                        <a href="">
-                            <FacebookIcon style="width: 30px;" />
-                        </a>
-                    </li>
                 </ul>
             </div>
             <div class="col-lg-1 col-12 d-flex px-5 px-lg-0 flex-wrap justify-content-end align-self-start footer-menu">
@@ -99,20 +78,14 @@
                         </nuxt-link>
                     </li>
                     <li>
-                        <nuxt-link to="/project">
-                            پروژه های ما
+                        <nuxt-link to="/#project">
+                            محصولات ما
                             <ChevronLeftIcon style="width: 20px; position: relative; top: 7px;" />
                         </nuxt-link>
                     </li>
                     <li>
                         <nuxt-link to="/about-us">
                             درباره ما
-                            <ChevronLeftIcon style="width: 20px; position: relative; top: 7px;" />
-                        </nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/service">
-                            خدمات ما
                             <ChevronLeftIcon style="width: 20px; position: relative; top: 7px;" />
                         </nuxt-link>
                     </li>
@@ -134,7 +107,7 @@
         <div class="row">
             <hr style="border: 1px solid rgba(0, 0, 0, 0.05);">
                 <p class="text-center my-3">
-                    @ تمامی حقوق مادی و معنوی سایت متعلق به شرکت محیاپرداز یزد می باشد
+                    @ تمامی حقوق مادی و معنوی سایت متعلق به {{ seo_title }} می باشد
                 </p>
             </div>
         </div>
@@ -152,7 +125,7 @@
             direction: rtl;
             text-align: justify;
             font-family: 'sans';
-            font-size: 12px;
+            font-size: 14px;
             line-height: 1.9;
             color: rgb(71, 84, 102);;
         }
@@ -177,6 +150,14 @@
                         color: #3B566E;
                     }
                 }
+            }
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .footer{
+            p{
+                font-size: 12px;
             }
         }
     }

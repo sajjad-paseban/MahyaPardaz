@@ -1,10 +1,14 @@
 import { resolve } from 'path'
-// https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   alias:{
     "@": resolve(__dirname) + '/'
   },
+  modules: [
+    '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
+  ],
   app: {
     head: {
       meta: [ // Each object in this array is its own meta tag
@@ -14,9 +18,9 @@ export default defineNuxtConfig({
         { "http-equiv": 'x-ua-compatible' , content: 'ie=edge' },
         { property: 'og:locale', content: 'fa_IR' },
         { property: 'og:type', content: 'website' },
-        { name: 'author', content: 'محیا پرداز یزد' },
+        { name: 'author', content: 'شرکت مهندسی محیا پرداز' },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
-        { name: 'apple-mobile-web-app-title', content: 'محیا پرداز یزد' },
+        { name: 'apple-mobile-web-app-title', content: 'شرکت مهندسی محیا پرداز' },
       ],
       link: [
         {rel: 'icon' , href: "/MahyaPardazYazd.png"},

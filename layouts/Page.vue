@@ -3,8 +3,9 @@
     import Header from '@/modules/header/Component.vue'
     import Footer from '@/modules/footer/Component.vue'
     import { base_info } from '@/services/index.service'
-    import { get_clinet_url, messages, setBaseInfo } from '@/helpers/function'
+    import { get_clinet_url, messages } from '@/helpers/function'
     import { ToastMessage } from '@/helpers/enum'
+import { useBaseStore } from '~/store'
 
     
     export default defineComponent({
@@ -67,7 +68,8 @@
             })
         },
         beforeMount() {
-            setBaseInfo(this.base_info)
+            const baseStore = useBaseStore()
+            baseStore.setBaseInfo(this.base_info)
         },
     })
 </script>

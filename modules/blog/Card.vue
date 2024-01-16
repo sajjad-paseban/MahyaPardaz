@@ -15,9 +15,9 @@
                 {{ title }}
             </nuxt-link>
         </h3>
-        <p>
+        <!-- <p>
             {{ description }}
-        </p>
+        </p> -->
         <div class="continue text-center">
             <nuxt-link :to="to">
                 <ChevronDoubleLeftIcon class="h-3" />
@@ -33,7 +33,8 @@
     .blog-item{
         border-radius: 12px;
         font-family: 'yekan';
-        box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.3);
         h3{
             text-align: right;
             padding: 0 25px;
@@ -70,7 +71,7 @@
                 border-radius: 10px !important;
                 position: relative;
                 width: 300px;
-                height: inherit;
+                height: 280px;
                 object-fit: cover;
                 object-position: center center;
                 transition: transform 300ms;

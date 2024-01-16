@@ -6,8 +6,8 @@ export function base_url(path?:string):string{
 }
 
 export function api_base_url(path:string = ""):string{
-    // return "http://192.168.0.218:8000/" + path
-    return "http://127.0.0.1:8000/" + path
+    return "https://back.mahyapardaz.com/" + path
+    // return "http://127.0.0.1:8000/" + path
 }
 
 export function get_clinet_url(path: string = ''){
@@ -52,15 +52,8 @@ export function breadcrumb(item: string){
         case "contact-us":
             return "ارتباط با ما"
         default:
-            return item
+            return item.replaceAll('-',' ')
     }
-}
-
-export function setBaseInfo(data: any){
-    localStorage.setItem(
-        'BASEINFO', 
-        JSON.stringify(data)
-    )
 }
 
 export function getBaseInfo(){

@@ -22,7 +22,7 @@
                 middleware: ["not-found-request-project"]
             })
             
-            useServerSeoMeta({
+            useSeoMeta({
                 ogTitle: res.data.entities.product.title,
                 ogDescription: res.data.entities.product.short_description,
                 ogUrl: base_url('project/'+res.data.entities.product.slug), 
@@ -85,7 +85,7 @@
                         </h2>
                         <DocumentTextIcon class="h-3" style="fill: #4886FF"/>
                     </div>
-                    <div v-html="project?.content" class="col-12 pb-4 d-flex justify-content-center flex-wrap">
+                    <div v-html="project?.content" class="content col-12 px-5 pb-4">
                     </div>
                 </div>
             </div>
@@ -93,18 +93,20 @@
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
     .project-detail{
         overflow: hidden;
         padding: 80px 15%;
         font-family: 'yekan';
         .project-detail-header{
+            
             button,a{
                 top: 0 !important;
                 transform: scale(0.75);
                 position: relative;
                 left: 30px;
             }
+
             span.project-detail-title{
                 position: relative;
                 font-size: 25px;
@@ -140,6 +142,25 @@
         }
 
         .project-detail-screenshot{
+            
+            .content{
+                img{
+                    min-width: 200px;
+                    max-width: 100% !important;
+                    min-height: 200px;
+                    max-height: 100%;
+                    object-fit: fill;
+                    display: block !important;
+                    border-radius: 4px;
+                    box-shadow: 1px 1px 5px rgba($color: #000, $alpha: 0.1);
+                }
+
+                p,div{
+                    display: block;
+                    direction: rtl;
+                }
+            }
+
             h2{
                 color: #3B566E;
                 font-weight: bold;

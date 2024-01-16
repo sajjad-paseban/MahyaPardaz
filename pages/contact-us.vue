@@ -1,6 +1,7 @@
 <script>
     import PageBanner from '@/modules/page-banner/Component.vue'
     import ContactUsForm from '@/forms/ContactUs.form.vue'
+    import { useBaseStore } from '~/store'
     definePageMeta({
         layout: 'page'
     })
@@ -11,9 +12,11 @@
                 title: 'ارتباط با ما'
             })
         },
-        data(){
-            return {
+        setup(){
+            const baseStore = useBaseStore()
 
+            return{
+                baseStore
             }
         },
         components: {
@@ -27,7 +30,7 @@
     <PageBanner title="ارتباط با ما" />
     <div class="contact-us">
         <p class="text-center p-3 p-lg-0">
-            جهت ارتباط با شرکت محیا پرداز یزد، مشخصات خود را در فرم زیر وارد نمایید و همکاران ما حداکثر تا 24 ساعت بعد با شما تماس خواهند گرفت.
+            جهت ارتباط با {{ baseStore.baseInfo.seo_title }}، مشخصات خود را در فرم زیر وارد نمایید و همکاران ما حداکثر تا 24 ساعت بعد با شما تماس خواهند گرفت.
         </p>
         <ContactUsForm />
     </div>    

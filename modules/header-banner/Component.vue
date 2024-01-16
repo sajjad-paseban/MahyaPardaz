@@ -1,12 +1,13 @@
 <script setup>
     import { ref } from 'vue'
-    import { getBaseInfo } from '~/helpers/function'
+    import { useBaseStore } from '~/store'
     const banner_title = ref(null)
     const banner_description = ref(null)
 
     onBeforeMount(() => {
-        banner_title.value = getBaseInfo().banner_title
-        banner_description.value = getBaseInfo().banner_description
+        const baseStore = useBaseStore()
+        banner_title.value = baseStore.baseInfo?.banner_title
+        banner_description.value = baseStore.baseInfo?.banner_description
     })
     
     const icons = ref([
@@ -36,7 +37,6 @@
                 <p>
                     {{ banner_description }}
                 </p>
-                <BtnRound to="/project" title="نمونه کارهای ما" :is-submit="false" />
             </div>
         </div>
         <img src="@/assets/images/background/rtl-bg-bottom.svg" alt="">
@@ -50,7 +50,7 @@
         z-index: 0;
         width: 100%;
         .background-layer{
-            background-image: linear-gradient(127deg, #384DFF 0%, #24CDFF 91%);
+            background-image: linear-gradient(127deg, #384DFF 0%, #000404 91%);
             min-height: 640px;
             opacity: 0.8;
         }
@@ -68,6 +68,7 @@
             .bg-main-icons{
                 display: flex;
                 width: calc(100% - 15%);
+                visibility: hidden;
                 padding-top: 50px;
                 padding-left: 15%;
                 flex-wrap: wrap;
@@ -98,15 +99,16 @@
             .bg-main-intro{
                 width: calc(100% - 14.5%);
                 padding-right: 14.5%;
-                font-family: 'yekan';
+                font-family: 'entezar';
                 h1{
-                    font-size: 55px;
+                    font-size: 60px;
                 }
                 p{
                     font-family: 'sans';
                     font-size: 14px;
                     line-height: 2;
                     direction: rtl;
+                    font-size: 15px;
                     text-align: justify;
                 }                
             }
@@ -116,21 +118,22 @@
             bottom: 0;
             width: 100%;
         }
-        background-image: url('@/assets/images/background/welcome.jpg');
+        background-image: url('@/assets/images/background/iot-city-1.jpg');
         background-position: center center;
         background-size: cover;
     }
     @media screen and (max-width: 950px) {
         .background-layer{
-            min-height: 700px !important;
+            min-height: 640px !important;
         }
         .background-main{
             top: 85px !important;
             flex-wrap: wrap;
             flex-direction: column-reverse;
             .bg-main-intro{
+                margin-top: 25px;
                 h1{
-                    font-size: 28px !important;
+                    font-size: 40px !important;
                 }
                 p{
                     text-align: justify;

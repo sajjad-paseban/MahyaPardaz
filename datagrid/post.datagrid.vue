@@ -77,7 +77,7 @@ export default defineComponent({
             </thead>
             <tbody>
                 <tr v-for="(item, index) in posts" :key="index">
-                    <td>{{ posts.length - index }}</td>
+                    <td>{{ index + 1 }}</td>
                     <td>{{ item.title }}</td>
                     <td>
                         <a :href="api_base_url + item.image" target="_blank" class="button-8" role="button">

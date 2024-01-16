@@ -1,3 +1,4 @@
+import { useAuthStore } from '~/store';
 import { api_base_url } from '~/helpers/function';
 import axios from 'axios';
 
@@ -35,6 +36,7 @@ export const deleteOne = async(id: number)=>{
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer "+ useAuthStore().token
             }
         })
         return res
@@ -63,7 +65,8 @@ export const create = async(form?: any)=>{
             headers: {
                 "Accept": "application/json",
                 'Content-Type': 'multipart/form-data',
-                "X-Requested-With": "XMLHttpRequest"
+                "X-Requested-With": "XMLHttpRequest",
+                "Authorization": "Bearer "+ useAuthStore().token
             }
         })
         return res
@@ -97,7 +100,8 @@ export const edit = async(form?: any)=>{
             headers: {
                 "Accept": "application/json",
                 'Content-Type': 'multipart/form-data',
-                "X-Requested-With": "XMLHttpRequest"
+                "X-Requested-With": "XMLHttpRequest",
+                "Authorization": "Bearer "+ useAuthStore().token
             }
         })
         return res
@@ -118,7 +122,8 @@ export const create_media = async(form?: any)=>{
             headers: {
                 "Accept": "application/json",
                 'Content-Type': 'multipart/form-data',
-                "X-Requested-With": "XMLHttpRequest"
+                "X-Requested-With": "XMLHttpRequest",
+                "Authorization": "Bearer "+ useAuthStore().token
             }
         })
         return res
@@ -132,6 +137,7 @@ export const get_medias = async()=>{
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer "+ useAuthStore().token
             }
         })
         return res
@@ -146,6 +152,7 @@ export const delete_media = async(id: number)=>{
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization": "Bearer "+ useAuthStore().token
             }
         })
         return res

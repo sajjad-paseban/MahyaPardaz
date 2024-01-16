@@ -13,7 +13,7 @@ export default defineComponent({
     mounted(){
         tinymce.init({
             selector: '#editor',
-            height: 500,
+            height: 1000,
             resize: false,
             placeholder: 'بنویس...',
             language: 'fa',

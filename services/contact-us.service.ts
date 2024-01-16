@@ -1,3 +1,4 @@
+import { useAuthStore } from '~/store';
 import { api_base_url } from '~/helpers/function';
 import axios from 'axios';
 import type { ContactUs } from '../models/contact-us.model';
@@ -24,6 +25,7 @@ export const getAll = async()=>{
                 "Accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
                 // "X-Requested-With": "XMLHttpRequest"
+                "Authorization": "Bearer "+ useAuthStore().token
             }
         })
         return res
@@ -38,6 +40,8 @@ export const getOne = async(id: number)=>{
                 "Accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
                 // "X-Requested-With": "XMLHttpRequest"
+                "Authorization": "Bearer "+ useAuthStore().token
+                
             }
         })
         return res
@@ -53,6 +57,8 @@ export const deleteOne = async(id: number)=>{
                 "Accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
                 // "X-Requested-With": "XMLHttpRequest"
+                "Authorization": "Bearer "+ useAuthStore().token
+                
             }
         })
         return res

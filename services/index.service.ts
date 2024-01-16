@@ -1,5 +1,7 @@
 import { api_base_url } from '~/helpers/function';
 import axios from 'axios';
+import { useAuthStore } from '~/store';
+
 export const index_data = async()=>{
     try{
         const res = await axios.get<any>(api_base_url('api'), {
@@ -34,7 +36,24 @@ export const edit_base_info = async(form?:any)=>{
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
-                "X-Requested-With": "XMLHttpRequest"
+                "X-Requested-With": "XMLHttpRequest",
+                "Authorization": "Bearer "+ useAuthStore().token
+            }
+        })
+        return res
+    }catch(res: any){
+        return res.response
+    }
+}
+
+export const get_statistics = async()=>{
+    try{
+        const res = await axios.get<any>(api_base_url('api/admin/statistics'), {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-Requested-With": "XMLHttpRequest",
+                "Authorization": "Bearer "+ useAuthStore().token
             }
         })
         return res
@@ -45,6 +64,7 @@ export const edit_base_info = async(form?:any)=>{
 
 export const login = async(form?:any)=>{
     try{
+
         const res = await axios.post<any>(api_base_url('api/login'), form, {
             headers: {
                 "Accept": "application/json",
@@ -52,23 +72,25 @@ export const login = async(form?:any)=>{
                 "X-Requested-With": "XMLHttpRequest"
             }
         })
+            
         return res
     }catch(res: any){
         return res.response
     }
 }
 
-export const logout = async(form?:any)=>{
-    // try{
-    //     const res = await axios.put<any>(api_base_url('api/login'), form, {
-    //         headers: {
-    //             "Accept": "application/json",
-    //             "Content-Type": "application/x-www-form-urlencoded",
-    //             "X-Requested-With": "XMLHttpRequest"
-    //         }
-    //     })
-    //     return res
-    // }catch(res: any){
-    //     return res.response
-    // }
+export const logout = async()=>{
+    try{
+        const res = await axios.post<any>(api_base_url('api/logout'), [], {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-Requested-With": "XMLHttpRequest",
+                "Authorization": "Bearer "+ useAuthStore().token
+            }
+        })
+        return res
+    }catch(res: any){
+        return res.response
+    }
 }

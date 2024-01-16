@@ -5,8 +5,8 @@
 <template>
     <div class="detail-section">
         <div class="row justify-content-center">
-            <DetailCard number="18" title="مشتریان" />
-            <DetailCard number="30" title="اپلیکیشن ها" />
+            <DetailCard number="15" title="مشتریان" />
+            <DetailCard number="12" title="سامانه ها" />
             <DetailCard number="80" title="کارمندان" />
         </div>
     </div>
@@ -16,7 +16,7 @@
     .detail-section{
         width: 100%;
         overflow: hidden;
-        background-image: linear-gradient(127deg, #384DFF 0%, #24CDFF 91%);
+        background-image: linear-gradient(127deg, #384DFF 0%, #579BE9 91%);
         color: #F7F8FF;
         font-family: 'yekan';
     }

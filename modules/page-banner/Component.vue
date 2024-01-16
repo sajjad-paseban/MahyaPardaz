@@ -69,7 +69,7 @@ export default defineComponent({
             right: 0;
             top: 0;
             bottom: 0;
-            background-image: linear-gradient(127deg, #384DFF 0%, #24CDFF 91%);
+            background-image: linear-gradient(127deg, #384DFF 0%, #000404 91%);
             min-height: inherit;
             opacity: 0.8;
         }

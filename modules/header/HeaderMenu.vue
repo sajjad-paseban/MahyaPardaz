@@ -18,8 +18,8 @@
             </NuxtLink>
         </li>
         <li class="menu-item">
-            <NuxtLink to="/project">
-                پروژه های ما
+            <NuxtLink to="/#project">
+                محصولات ما
             </NuxtLink>
         </li>
         <li class="menu-item">
@@ -27,11 +27,11 @@
                 درباره ما
             </NuxtLink>
         </li>
-        <li class="menu-item">
+        <!-- <li class="menu-item">
             <NuxtLink to="/service">
                 خدمات ما
             </NuxtLink>
-        </li>
+        </li> -->
         <li class="menu-item">
             <NuxtLink to="/blog">
                 بلاگ
@@ -50,8 +50,8 @@
             </NuxtLink>
         </li>
         <li class="menu-item">
-            <NuxtLink to="/project">
-                پروژه های ما
+            <NuxtLink to="/#project">
+                محصولات ما
             </NuxtLink>
         </li>
         <li class="menu-item">
@@ -59,11 +59,11 @@
                 درباره ما
             </NuxtLink>
         </li>
-        <li class="menu-item">
+        <!-- <li class="menu-item">
             <NuxtLink to="/service">
                 خدمات ما
             </NuxtLink>
-        </li>
+        </li> -->
         <li class="menu-item">
             <NuxtLink to="/blog">
                 بلاگ
@@ -83,7 +83,7 @@
         padding: 0;
         display: flex;
         font-family: yekan;
-        font-size: 16px;
+        font-size: 18px;
         direction: rtl;
         &.transparent{
             li{
@@ -138,7 +138,7 @@
         list-style: none;
         padding: 0;
         font-family: yekan;
-        font-size: 15px;
+        font-size: 18px;
         li.menu-item{
             border-bottom: 1px solid #f5f5f5;
             text-align: right;

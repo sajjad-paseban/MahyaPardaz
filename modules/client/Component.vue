@@ -1,50 +1,63 @@
 <script>
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/solid'
-import { api_base_url as apiBaseUrl } from '~/helpers/function';
+    import 'vue3-carousel/dist/carousel.css'
+    import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+    import { api_base_url as apiBaseUrl } from '~/helpers/function';
+
 
     export default defineComponent({
         name: 'client-section',
         components: {
-            ChevronLeftIcon,
-            ChevronRightIcon
+            Carousel,
+            Slide,
+            Pagination,
+            Navigation,
         },
         data(){
             return {
-                img_pos: 0,
-                api_base_url: apiBaseUrl()
+                api_base_url: apiBaseUrl(),
+                settings: {
+                    itemsToShow: 1,
+                    snapAlign: 'center',
+                },
+                // breakpoints are mobile first
+                // any settings not specified will fallback to the carousel settings
+                breakpoints: {
+                    // 700px and up
+                    700: {
+                        itemsToShow: 3.5,
+                        snapAlign: 'center',
+                    },
+                    // 1024 and up
+                    1024: {
+                        itemsToShow: 5,
+                        snapAlign: 'center',
+                    },
+                },
             }
         },
         props: ['data'],
-        methods: {
-            image_changer(flag){
-                if(flag === false && !(this.img_pos <= 0)){
-                    this.img_pos -= 1
-                }
-                
-                if(flag === true && !(this.img_pos >= this.data.length - 1)){
-                    this.img_pos += 1
-                }
-            }
-        }
         
     })
 
 </script>
 
 <template>
-    <div class="client-section py-5">
-        <div class="row justify-content-between">
-            <div class="col-auto align-self-center">
-                <ChevronLeftIcon @click="image_changer(false)" class="h-3 mx-5 slider" />
-            </div>
-            <div class="col-auto text-center align-self-center">
-                <img :src="api_base_url + data[img_pos]?.image" width="60" alt="">
-                <h3>{{ data[img_pos]?.title }}</h3>
-            </div>
-            <div class="col-auto align-self-center">
-                <ChevronRightIcon @click="image_changer(true)" class="h-3 mx-5 slider" />
-            </div>
-        </div>
+    <div class="client-section py-3">
+        <h2 class="text-center py-2">
+            مشتریان ما
+        </h2>
+        <Carousel v-bind="settings" :breakpoints="breakpoints" :autoplay="3000" :wrap-around="true">
+            <Slide v-for="(slide, index) in data" :key="index">
+                <div class="carousel__item">
+                    <img :src="api_base_url + slide?.image" width="60" alt="">
+                    <h3>{{ slide?.title }}</h3>
+                </div>
+            </Slide>
+
+            <template #addons>
+                <Navigation />
+            </template>
+        </Carousel>
     </div>
 </template>
 
@@ -52,17 +65,19 @@ import { api_base_url as apiBaseUrl } from '~/helpers/function';
     .client-section{
         width: 100%;
         overflow: hidden;
-        background-image: linear-gradient(127deg, #384DFF 0%, #24CDFF 91%);
+        background-image: linear-gradient(127deg, #384DFF 0%, #579BE9 91%);
         color: #F7F8FF;
         font-family: 'yekan';
         user-select: none;
-        .slider{
-            cursor: pointer;
-            transition: background-color 300ms;
-            border-radius: 50px;
-            padding: 5px;
-            &:hover{
-                background-color: rgba($color: #000000, $alpha: 0.5);
+        .carousel__item{
+            h3{
+                font-size: 35px;
+                font-family: 'nastaliq';
+            }
+            img{
+                width: 150px;
+                height: 150px;
+                object-fit: contain;
             }
         }
     }

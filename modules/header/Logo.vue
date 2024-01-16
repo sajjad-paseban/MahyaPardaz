@@ -27,14 +27,16 @@
 
         .logo-title{
             position: relative;
-            bottom: 12px;
+            bottom: 16px;
             right: 10px;
-            font-size: 20px;
-            font-family: 'ghasem';
+            font-size: 28px;
+            font-family: 'entezar';
             color: #212529;
         }
         .logo-image{
-            height: 35px;
+            position: relative;
+            top: 4px;
+            height: 55px;
         }
     }
 </style>

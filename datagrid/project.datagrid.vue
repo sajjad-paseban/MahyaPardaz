@@ -65,6 +65,9 @@ export default defineComponent({
                         عنوان
                     </th>
                     <th>
+                        نوع سامانه
+                    </th>
+                    <th>
                         تصویر پروژه
                     </th>
                     <th>
@@ -77,8 +80,9 @@ export default defineComponent({
             </thead>
             <tbody>
                 <tr v-for="(item, index) in projects" :key="index">
-                    <td>{{ projects.length - index }}</td>
+                    <td>{{ index + 1 }}</td>
                     <td>{{ item.title }}</td>
+                    <td>{{ item.type ? 'سامانه شهروندی' : 'سامانه شهرداری' }}</td>
                     <td>
                         <a :href="api_base_url + item.image" target="_blank" class="button-8" role="button">
                             مشاهده تصویر

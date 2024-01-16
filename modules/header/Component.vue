@@ -1,8 +1,8 @@
 <script>
-    import HeaderMenu from '../header/HeaderMenu.vue' 
+    import { useBaseStore } from '~/store'
+import HeaderMenu from '../header/HeaderMenu.vue' 
     import Logo from '../header/Logo.vue'
     import { defineComponent } from 'vue'
-import { getBaseInfo } from '~/helpers/function'
     
     export default defineComponent({
         name: 'HeaderModule',
@@ -17,7 +17,8 @@ import { getBaseInfo } from '~/helpers/function'
             }
         },
         beforeMount(){
-            this.seo_title = getBaseInfo().seo_title 
+            const baseStore = useBaseStore()
+            this.seo_title = baseStore.baseInfo?.seo_title
         },
         mounted() {
             window.addEventListener('scroll', () => {

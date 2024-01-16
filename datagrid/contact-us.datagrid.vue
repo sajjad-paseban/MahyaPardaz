@@ -80,7 +80,7 @@ export default defineComponent({
             </thead>
             <tbody>
                 <tr v-for="(item, index) in requests" :key="index">
-                    <td>{{ requests.length - index }}</td>
+                    <td>{{ index + 1 }}</td>
                     <td>{{ item.full_name }}</td>
                     <td>{{ item.mobile }}</td>
                     <td>
