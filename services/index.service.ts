@@ -8,7 +8,11 @@ export const index_data = async()=>{
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
-            }
+                "X-Requested-With": "XMLHttpRequest",
+                'Access-Control-Allow-Origin' : '*',
+                'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+
+            },
         })
         return res
     }catch(res: any){
@@ -22,6 +26,7 @@ export const base_info = async()=>{
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
+                "X-Requested-With": "XMLHttpRequest",
             }
         })
         return res

@@ -42,7 +42,7 @@
 </script>
 
 <template>
-    <div class="client-section py-3">
+    <div class="client-section pt-3">
         <h2 class="text-center py-2">
             مشتریان ما
         </h2>
@@ -65,18 +65,20 @@
     .client-section{
         width: 100%;
         overflow: hidden;
-        background-image: linear-gradient(127deg, #384DFF 0%, #579BE9 91%);
-        color: #F7F8FF;
+        background-color: rgba(239, 240, 233, 0.5);
+        color: #3B566E;
         font-family: 'yekan';
         user-select: none;
         .carousel__item{
             h3{
                 font-size: 35px;
                 font-family: 'nastaliq';
+                position: relative;
+                bottom: 15px;
             }
             img{
-                width: 150px;
-                height: 150px;
+                width: 140px;
+                height: 140px;
                 object-fit: contain;
             }
         }

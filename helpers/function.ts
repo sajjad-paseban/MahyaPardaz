@@ -2,7 +2,7 @@ import { ToastMessage } from './enum';
 import Swal from "sweetalert2";
 
 export function base_url(path?:string):string{
-    return "https://mahyapardaz.ir/" + path
+    return "https://mahyapardaz.com/" + path
 }
 
 export function api_base_url(path:string = ""):string{
@@ -11,7 +11,7 @@ export function api_base_url(path:string = ""):string{
 }
 
 export function get_clinet_url(path: string = ''){
-    return 'http://localhost:3000/'+ path
+    return 'https://mahyapardaz.com/'+ path
 }
 
 export function Toast(){

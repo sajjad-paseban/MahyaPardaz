@@ -160,8 +160,7 @@
                 img{
                     min-width: 200px;
                     max-width: 100% !important;
-                    min-height: 200px;
-                    max-height: 100%;
+                    height: 100%;
                     object-fit: fill;
                     display: block !important;
                     border-radius: 4px;
@@ -171,6 +170,10 @@
                 p,div{
                     direction: rtl;
                     display: block;
+                    color: #6F8BA4;
+                    *{
+                        font-family: 'yekan' !important;
+                    }
                 }
 
             }

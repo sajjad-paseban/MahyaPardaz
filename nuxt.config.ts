@@ -2,6 +2,7 @@ import { resolve } from 'path'
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  ssr: true,
   alias:{
     "@": resolve(__dirname) + '/'
   },
@@ -29,7 +30,7 @@ export default defineNuxtConfig({
         { src: '/tinymce/tinymce.min.js' },
         { src: '/bootstrap/bootstrap.min.js' }
       ]
-    }
+    },
   },
   css: [
     "@/assets/fonts.scss",

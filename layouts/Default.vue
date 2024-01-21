@@ -62,6 +62,13 @@
         baseStore.setBaseInfo(res.data.entities.base_info)
     })
 
+    const showLoading = ref(true)
+    onMounted(()=>{
+        setTimeout(()=>{
+            showLoading.value = false
+        },1000)
+    })
+
 </script>
 
 <template>
@@ -73,6 +80,7 @@
     <footer class="footer-section">
         <Footer />
     </footer>
+    <Loading v-if="showLoading" />
 </template>
 
 <style lang="scss" scoped>

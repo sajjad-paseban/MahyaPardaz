@@ -9,6 +9,7 @@ export default defineComponent({
     },
     data(){
         return {
+            showLoading: true,
             showSideBar: false
         }
     },
@@ -21,6 +22,11 @@ export default defineComponent({
         getShowSideBarStatus(val){
             this.showSideBar = val
         }
+    },
+    mounted(){
+        setTimeout(()=>{
+            this.showLoading = false
+        },3000)
     }
 })
 </script>
@@ -37,6 +43,7 @@ export default defineComponent({
                 <SideBar />
             </div>
         </section>
+        <Loading v-if="showLoading" />
     </div>
 </template>
 

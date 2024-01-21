@@ -1,10 +1,10 @@
 <script>
 import { defineComponent } from 'vue';
 import { ChevronLeftIcon } from '@heroicons/vue/16/solid'
-import { breadcrumb as breeadcb } from '@/helpers/function'
+import { breadcrumb as breeadcb, get_clinet_url } from '@/helpers/function'
 export default defineComponent({
     name: 'PageBannerModule',
-    props: ['title'],
+    props: ['title','image'],
     data(){
         return {
             routeParams: []
@@ -26,7 +26,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="page-banner">
+    <div class="page-banner" :style="{ backgroundImage: `url(${ image ? image : get_clinet_url()+'/_nuxt/assets/images/background/iot-city-2.jpg' })`}">
         <div class="page-layer"></div>
         <div class="page-main text-center">
             <h2>
@@ -58,10 +58,10 @@ export default defineComponent({
 <style lang="scss" scoped>
     .page-banner{
         position: relative;
-        background-image: url('@/assets/images/background/page-banner2.jpg');
+        // background-image: url('@/assets/images/background/page-banner2.jpg');
         background-size: cover;
         background-position: center center;
-        min-height: 270px;
+        min-height: 400px;
 
         .page-layer{
             position: absolute;
@@ -76,7 +76,7 @@ export default defineComponent({
         .page-main{
             position: relative;
             z-index: 1;
-            padding-top: 60px;
+            padding-top: 135px;
             h2{
                 color: #fff;
                 font-family: 'vazir';

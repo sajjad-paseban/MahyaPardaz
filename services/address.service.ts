@@ -8,6 +8,7 @@ export const get_addresses = async()=>{
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
+                "X-Requested-With": "XMLHttpRequest",
             }
         })
         return res

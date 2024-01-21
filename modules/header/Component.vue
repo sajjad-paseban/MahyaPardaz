@@ -1,6 +1,6 @@
 <script>
     import { useBaseStore } from '~/store'
-import HeaderMenu from '../header/HeaderMenu.vue' 
+    import HeaderMenu from '../header/HeaderMenu.vue' 
     import Logo from '../header/Logo.vue'
     import { defineComponent } from 'vue'
     
@@ -34,7 +34,7 @@ import HeaderMenu from '../header/HeaderMenu.vue'
 <template>
     <header class="header-top" :class="[transparent ? 'transparent' : '']">
         <HeaderMenu :transparent="transparent"/>
-        <Logo :transparent="transparent" logo-src="./MahyaPardazYazd.png" :title="seo_title" />
+        <Logo :transparent="transparent" logo-src="https://mahyapardaz.com/MahyaPardazYazd.png" :title="seo_title" />
     </header>
 </template>
 

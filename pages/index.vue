@@ -63,7 +63,7 @@
 
 <template>
     <!-- // سامانه های شهرداری -->
-    <ProjectSection id="project" :showAllBtn="false" :showMainHeader="true" title="سامانه های شهرسازی">
+    <ProjectSection id="project" :showAllBtn="false" :showMainHeader="true" title="سامانه های شهرداری">
         <ProjectCard v-for="(i, index) in project_type_0" :key="index" 
         :imgSrc="api_base_url + i.image"
         :title="i.title"

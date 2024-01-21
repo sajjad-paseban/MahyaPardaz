@@ -5,7 +5,7 @@
 <template>
     <div class="col-auto item bg-white p-0 m-2">
         <nuxt-link :to="to">
-            <h3 class="text-center">
+            <h3 class="text-center" dir="rtl">
                 {{ title }}
             </h3>
             <div class="image-cover">
@@ -75,7 +75,7 @@
                     text-align: justify;
                     padding: 5px 25px;
                     color: #fff;
-                    font-size: 17px;
+                    font-size: 20px;
                 }
 
             }

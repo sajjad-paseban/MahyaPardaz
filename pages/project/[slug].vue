@@ -3,8 +3,8 @@
 
     import PageBanner from '@/modules/page-banner/Component.vue'
     import { DocumentTextIcon } from '@heroicons/vue/24/solid'
-    import { api_base_url, base_url } from '~/helpers/function'
-    import { get_project } from '~/services/project.service'
+    import { api_base_url, base_url } from '@/helpers/function'
+    import { get_project } from '@/services/project.service'
     
     export default defineComponent({
         name: 'project-detail',
@@ -45,7 +45,7 @@
 </script>
 
 <template>
-    <PageBanner :title="project?.title" />
+    <PageBanner :title="project?.title" :image="api_base_url + project?.image" />
     <div class="project-detail">
         <div class="row rounded shadow shadow-md">
             <div class="col-12">
@@ -67,7 +67,7 @@
                 <div class="project-detail-description row border-bottom">
                     <div class="col-12 d-flex justify-content-end p-4">
                         <h2>
-                            توضیحات
+                            معرفی سامانه
                         </h2>
                         <DocumentTextIcon class="h-3" style="fill: #4886FF"/>
                     </div>
@@ -81,7 +81,7 @@
                 <div class="project-detail-screenshot row border-bottom">
                     <div class="col-12 d-flex justify-content-end p-4">
                         <h2>
-                            اسکرین شات ها
+                            نگاه کلی
                         </h2>
                         <DocumentTextIcon class="h-3" style="fill: #4886FF"/>
                     </div>
@@ -99,7 +99,7 @@
         padding: 80px 15%;
         font-family: 'yekan';
         .project-detail-header{
-            
+            display: none;
             button,a{
                 top: 0 !important;
                 transform: scale(0.75);
@@ -138,6 +138,7 @@
                 position: relative;
                 bottom: 50px;
                 color: #6F8BA4;
+                font-size: 18px;
             }
         }
 
@@ -147,9 +148,8 @@
                 img{
                     min-width: 200px;
                     max-width: 100% !important;
-                    min-height: 200px;
-                    max-height: 100%;
                     object-fit: fill;
+                    height: 100%;
                     display: block !important;
                     border-radius: 4px;
                     box-shadow: 1px 1px 5px rgba($color: #000, $alpha: 0.1);
@@ -158,6 +158,10 @@
                 p,div{
                     display: block;
                     direction: rtl;
+                    color: #6F8BA4;
+                    *{
+                        font-family: 'yekan' !important;
+                    }
                 }
             }
 

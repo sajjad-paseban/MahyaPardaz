@@ -30,6 +30,11 @@ import { useBaseStore } from '~/store'
             Header,
             Footer
         },
+        data(){
+            return {
+                showLoading: true,
+            }
+        },
         beforeCreate(){
             
             useHead({
@@ -71,10 +76,16 @@ import { useBaseStore } from '~/store'
             const baseStore = useBaseStore()
             baseStore.setBaseInfo(this.base_info)
         },
+        mounted(){
+            setTimeout(()=>{
+                this.showLoading = false
+            },1000)
+        }
     })
 </script>
 
 <template>
+    <Loading v-if="showLoading" />
     <Header />
     <slot />
     <Footer />
