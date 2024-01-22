@@ -64,7 +64,7 @@
 <template>
     <!-- // سامانه های شهرداری -->
     <ProjectSection id="project" :showAllBtn="false" :showMainHeader="true" title="سامانه های شهرداری">
-        <ProjectCard v-for="(i, index) in project_type_0" :key="index" 
+        <ProjectCard v-for="(i, index) in projects" :key="index" 
         :imgSrc="api_base_url + i.image"
         :title="i.title"
         :description="i.short_description"
@@ -73,13 +73,13 @@
     <!-- // سامانه های شهرداری -->
 
     <!-- // سامانه های شهروندی -->
-    <ProjectSection :showAllBtn="false" title="سامانه های شهروندی">
+    <!-- <ProjectSection :showAllBtn="false" title="سامانه های شهروندی">
         <ProjectCard v-for="(i, index) in project_type_1" :key="index" 
         :imgSrc="api_base_url + i.image"
         :title="i.title"
         :description="i.short_description"
         :to="'/project/'+i.slug" />
-    </ProjectSection>
+    </ProjectSection> -->
     <!-- // سامانه های شهروندی -->
     <ClientSection :data="clients" />
     <BlogSection> 
@@ -89,5 +89,5 @@
         :img-src="api_base_url + i.image"
         :to="'/blog/'+i.slug" />
     </BlogSection>
-    <DetailSection />
+    <!-- <DetailSection /> -->
 </template>

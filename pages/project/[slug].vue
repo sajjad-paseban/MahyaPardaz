@@ -1,84 +1,67 @@
-<script>
+<script setup>
 
 
     import PageBanner from '@/modules/page-banner/Component.vue'
     import { DocumentTextIcon } from '@heroicons/vue/24/solid'
-    import { api_base_url, base_url } from '@/helpers/function'
+    import { api_base_url as api_url, base_url } from '@/helpers/function'
     import { get_project } from '@/services/project.service'
     
-    export default defineComponent({
-        name: 'project-detail',
-        components: {
-            PageBanner,
-            DocumentTextIcon
-        },
-        async setup(){
-            
-            const route = useRoute()
-            const res = await get_project(route.params.slug).then(res => res)
+    const route = useRoute()
+    const res = await get_project(route.params.slug).then(res => res)
+    const api_base_url = api_url()
+    const project = ref(res.data.entities.product)
 
-            definePageMeta({
-                layout: 'page',
-                middleware: ["not-found-request-project"]
-            })
-            
-            useSeoMeta({
-                ogTitle: res.data.entities.product.title,
-                ogDescription: res.data.entities.product.short_description,
-                ogUrl: base_url('project/'+res.data.entities.product.slug), 
-                ogImage: api_base_url(res.data.entities.product.image),
-                title: res.data.entities.product.title,
-                description: res.data.entities.product.short_description,
-            })
-
-            return {
-                project: res.data.entities.product
-            }
-        
-        },
-        data(){
-            return {
-                api_base_url: api_base_url(),
-            }
-        },
+    definePageMeta({
+        layout: 'page',
+        middleware: ["not-found-request-project"]
     })
+    
+    useSeoMeta({
+        ogTitle: res.data.entities.product.title,
+        ogDescription: res.data.entities.product.short_description,
+        ogUrl: base_url('project/'+res.data.entities.product.slug), 
+        ogImage: api_url(res.data.entities.product.image),
+        title: res.data.entities.product.title,
+        description: res.data.entities.product.short_description,
+    })
+    
 </script>
 
 <template>
     <PageBanner :title="project?.title" :image="api_base_url + project?.image" />
     <div class="project-detail">
-        <div class="row rounded shadow shadow-md">
+        <div class="row">
             <div class="col-12">
-
-                <div class="project-detail-header row justify-content-between border-bottom">
-                    <div class="col-lg-auto col-12 d-flex flex-wrap align-items-center">
+               
+                <div class="project-detail-description row justify-content-between align-items-center my-5">
+                    <div class="col-4 p-0">
+                        <img class="shadow shadow-md" :src="api_base_url + project?.image" alt="">
                     </div>
-                    <div class="col-lg-auto col-12 py-3 d-flex flex-wrap flex-lg-nowrap justify-content-center flex-column-reverse flex-md-row">
-                        <div class="mx-3">
-                            <span class="project-detail-title d-block">
-                                {{ project?.title }}
-                            </span>
-                            <BtnRound is-block="true" title="پیش نمایش" :to="''" :is-primary="true" />
+                    <div class="col-7 position-relative">
+                        <div class="row">
+                            <div class="col-12" style="text-align: right;">
+                                <h2 class="display-6" style="right: 0" dir="rtl">
+                                    {{ project.title }}
+                                </h2>
+                            </div>
                         </div>
-                        <img :src="api_base_url + project?.image" alt="">
+                        <div class="row rounded shadow shadow-md">
+                            <div class="col-12 d-flex justify-content-end p-4">
+                                <h2>
+                                    معرفی سامانه
+                                </h2>
+                                <DocumentTextIcon class="h-3" style="fill: #4886FF"/>
+                            </div>
+                            <div class="col-12">
+                                <p>
+                                    {{ project?.short_description }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="project-detail-description row border-bottom">
-                    <div class="col-12 d-flex justify-content-end p-4">
-                        <h2>
-                            معرفی سامانه
-                        </h2>
-                        <DocumentTextIcon class="h-3" style="fill: #4886FF"/>
-                    </div>
-                    <div class="col-12">
-                        <p>
-                            {{ project?.short_description }}
-                        </p>
-                    </div>
-                </div>
-
-                <div class="project-detail-screenshot row border-bottom">
+                <div class="project-detail-screenshot row rounded shadow shadow-md">
                     <div class="col-12 d-flex justify-content-end p-4">
                         <h2>
                             نگاه کلی
@@ -98,29 +81,6 @@
         overflow: hidden;
         padding: 80px 15%;
         font-family: 'yekan';
-        .project-detail-header{
-            display: none;
-            button,a{
-                top: 0 !important;
-                transform: scale(0.75);
-                position: relative;
-                left: 30px;
-            }
-
-            span.project-detail-title{
-                position: relative;
-                font-size: 25px;
-                color: #3B566E;
-                text-align: right;
-                margin: 10px 0;
-            }
-
-            img{
-                width: 200px;
-                object-fit: cover;
-                object-position: center center;
-            }
-        }
 
         .project-detail-description{
             h2{
@@ -140,6 +100,14 @@
                 color: #6F8BA4;
                 font-size: 18px;
             }
+
+            img{
+                width: 100%;
+                height: 350px;
+                border-radius: 5px;
+                object-fit: cover;
+                object-position: center center;
+            }
         }
 
         .project-detail-screenshot{
@@ -151,8 +119,6 @@
                     object-fit: fill;
                     height: 100%;
                     display: block !important;
-                    border-radius: 4px;
-                    box-shadow: 1px 1px 5px rgba($color: #000, $alpha: 0.1);
                 }
 
                 p,div{

@@ -42,7 +42,7 @@ export function messages(ToastMessageType: ToastMessage){
 export function breadcrumb(item: string){
     switch(item){
         case "project":
-            return "پروژه های ما"
+            return "محصولات ما"
         case "about-us":
             return "درباره ما"
         case "service":

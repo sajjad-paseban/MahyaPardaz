@@ -19,6 +19,7 @@ export default defineComponent({
         const schema = yup.object({
             title: yup.string().required("فیلد عنوان پروژه اجباری می باشد"),
             type: yup.string().required('فیلد نوع سامانه اجباری می باشد'),
+            intro_description: yup.string().required("فیلد توضیحات مقدمه اجباری می باشد"),
             short_description: yup.string().required("فیلد توضیحات اجباری می باشد"),
             keywords: yup.string().required("فیلد کلمات کلیدی اجباری می باشد"),
         })
@@ -29,6 +30,7 @@ export default defineComponent({
                 params:{
                     title: null,
                     type: null,
+                    intro_description: null,
                     short_description: null,
                     content: null,
                     keywords: null,
@@ -105,6 +107,13 @@ export default defineComponent({
             <FileUpload @model="val => form.params.image = val" :value="form.params.image" label="آپلود تصویر" :dataLang="'fa'" name="image" id="image" />
             <span style="font-size: 12px;direction: rtl;" class="text-danger d-block" v-if="form.errors?.image">
                 {{ form.errors?.image[0] }}
+            </span>
+        </div>
+        <div class="form-group my-3">
+            <TextArea @model="val => form.params.intro_description = val" :value="form.params.intro_description" label="توضیحات مقدمه" :dataLang="'fa'" name="intro_description" id="short_description" />
+            <ErrorMessage class="text-danger d-block" style="text-align: right;" name="intro_description" />
+            <span style="font-size: 12px;direction: rtl;" class="text-danger d-block" v-if="form.errors?.intro_description">
+                {{ form.errors?.intro_description[0] }}
             </span>
         </div>
         <div class="form-group my-3">

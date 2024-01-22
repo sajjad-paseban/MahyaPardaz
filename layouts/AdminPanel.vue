@@ -43,7 +43,7 @@ export default defineComponent({
                 <SideBar />
             </div>
         </section>
-        <Loading v-if="showLoading" />
+        <Loading type="1" v-if="showLoading" />
     </div>
 </template>
 

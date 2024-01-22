@@ -1,27 +1,36 @@
 <template>
     <div v-bind:style="styles" class="spinner spinner--jumper">
-        <div></div>
-        <div></div>
-        <div></div>
+        <div :style="spinner_styles"></div>
+        <div :style="spinner_styles"></div>
+        <div :style="spinner_styles"></div>
     </div>
 </template>
 <script>
 export default {
     props: {
-    size: {
-        default: '40px'
-    }
+        size: {
+            default: '40px',
+        },
+        bgColor: {
+            default: '#fff'
+        }
     },
     computed: {
-    styles () {
-        return {
-        width: this.size,
-        height: this.size,
+        styles () {
+            return {
+                width: this.size,
+                height: this.size,
+            }
+        },
+        spinner_styles(){
+            return {
+                'background-color': this.bgColor,
+            }
         }
-    }
     }
 }
 </script>
+
 <style lang="scss" scoped>
 .spinner{
     * {
@@ -30,7 +39,7 @@ export default {
     }
 }
 .spinner > div {
-    background-color: #fff;
+    background-color: #000;
     border-radius: 100%;
     animation-fill-mode: both;
     position: absolute;

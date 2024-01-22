@@ -7,7 +7,8 @@ export default defineComponent({
     props: ['title','image'],
     data(){
         return {
-            routeParams: []
+            routeParams: [],
+            client_url: get_clinet_url()
         }
     },  
     components: {
@@ -26,13 +27,13 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="page-banner" :style="{ backgroundImage: `url(${ image ? image : get_clinet_url()+'/_nuxt/assets/images/background/iot-city-2.jpg' })`}">
+    <div :style="{ backgroundImage: `url(${ image ? image : '' })`}" :class="{'default-bg': image == null, 'page-banner': true}">
         <div class="page-layer"></div>
         <div class="page-main text-center">
-            <h2>
+            <h2 dir="rtl">
                 {{ title }}
             </h2>
-            <div class="navigation">
+            <!-- <div class="navigation">
                 <nuxt-link to="/">
                     صفحه اصلی
                 </nuxt-link>
@@ -50,7 +51,7 @@ export default defineComponent({
                         {{ title }}
                     </span>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>    
 </template>
@@ -58,10 +59,12 @@ export default defineComponent({
 <style lang="scss" scoped>
     .page-banner{
         position: relative;
-        // background-image: url('@/assets/images/background/page-banner2.jpg');
+        &.default-bg{
+            background-image: url('@/assets/images/background/iot-city-2.jpg') !important;
+        }
         background-size: cover;
         background-position: center center;
-        min-height: 400px;
+        min-height: 250px;
 
         .page-layer{
             position: absolute;
@@ -76,7 +79,7 @@ export default defineComponent({
         .page-main{
             position: relative;
             z-index: 1;
-            padding-top: 135px;
+            padding-top: 80px;
             h2{
                 color: #fff;
                 font-family: 'vazir';

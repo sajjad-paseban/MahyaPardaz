@@ -2,22 +2,31 @@
     import PageBanner from '@/modules/page-banner/Component.vue'
     import ContactUsForm from '@/forms/ContactUs.form.vue'
     import { useBaseStore } from '~/store'
+
     definePageMeta({
         layout: 'page'
     })
 
     export default defineComponent({
-        name: 'contact-us',setup(){
+        name: 'contact-us',
+        data(){
+            return {
+                seo_title: null
+            }
+        },
+        setup(){
             useHead({
                 title: 'ارتباط با ما'
             })
-        },
-        setup(){
+
             const baseStore = useBaseStore()
 
             return{
                 baseStore
             }
+        },
+        mounted(){
+            this.seo_title = this.baseStore.baseInfo.seo_title
         },
         components: {
             PageBanner,
@@ -30,7 +39,7 @@
     <PageBanner title="ارتباط با ما" />
     <div class="contact-us">
         <p class="text-center p-3 p-lg-0">
-            جهت ارتباط با {{ baseStore.baseInfo.seo_title }}، مشخصات خود را در فرم زیر وارد نمایید و همکاران ما حداکثر تا 24 ساعت بعد با شما تماس خواهند گرفت.
+            جهت ارتباط با {{ seo_title }}، مشخصات خود را در فرم زیر وارد نمایید و همکاران ما حداکثر تا 24 ساعت بعد با شما تماس خواهند گرفت.
         </p>
         <ContactUsForm />
     </div>    

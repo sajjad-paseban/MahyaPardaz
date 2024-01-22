@@ -35,14 +35,14 @@
     <div class="footer">
 
         
-        <div class="row justify-content-center">
-            <div class="col-10 d-flex justify-content-end">
+        <div class="row justify-content-center my-4">
+            <div class="col-auto">
                 <h2>ارتباط با ما</h2>
             </div>
         </div>
 
         <div class="row justify-content-center">
-            <div v-for="(i, index) in addresses" :key="index" class="col-10 col-lg-5 px-lg-3 px-2">
+            <div v-for="(i, index) in addresses" :key="index" class="col-md-4 mx-2 px-5">
                 <p>
                     {{ i.text }}
                 </p>
@@ -60,8 +60,8 @@
         </div>
 
 
-        <div class="row justify-content-center">
-            <div class="col-10 d-flex justify-content-end link">
+        <div class="row justify-content-center py-3">
+            <div class="col-auto link">
                 <a data-url="out" data-lang="en" href="">
                     {{ email }}
                 </a>
@@ -71,17 +71,17 @@
 
 
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-12 px-5 d-flex flex-wrap justify-content-center py-4 align-self-md-start">
                 <Logo :title="seo_title" logo-src="https://mahyapardaz.com/MahyaPardazYazd.png" />
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <style lang="scss" scoped>
     .footer{
-        padding: 50px 0 0 0;
+        border-top: 1px solid rgba($color: #ccc, $alpha: 0.4);
         background-color: #F4F8FB;
         width: 100%;
         overflow: hidden;
@@ -89,7 +89,7 @@
             direction: rtl;
             text-align: justify;
             font-family: 'yekan';
-            font-size: 16px;
+            font-size: 18px;
             line-height: 1.9;
             color: rgb(71, 84, 102);;
         }
@@ -106,7 +106,6 @@
 
             a{
                 position: relative;
-                top: -2px;
                 right: 5px;
             }
 
@@ -117,7 +116,7 @@
     @media screen and (max-width: 600px) {
         .footer{
             p{
-                font-size: 12px;
+                font-size: 18px;
             }
         }
     }
