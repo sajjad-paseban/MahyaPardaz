@@ -4,7 +4,7 @@
 </script>
 
 <template>
-    <div class="col-auto blog-item mx-4 my-5">
+    <div class="col-auto blog-item mx-2 my-5">
         <div class="image-cover">
             <nuxt-link :to="to">
                 <img :src="imgSrc" alt="">

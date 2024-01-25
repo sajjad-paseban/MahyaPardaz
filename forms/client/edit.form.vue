@@ -7,6 +7,8 @@ import Input from '@/components/form/Input.vue'
 import FileUpload from '@/components/form/FileUpload.vue'
 import { edit, getOne } from '@/services/client.service'
 import Swal from 'sweetalert2'
+import { get_projects } from '@/services/project.service'
+
 export default defineComponent({
     name: 'ClientEditForm',
     data(){
@@ -38,6 +40,8 @@ export default defineComponent({
         if(res && res.status == 200){
             this.form.params.id = res.data.entities.client.id
             this.form.params.title = res.data.entities.client.title
+            this.form.params.selected = res.data.entities.client.selected == 1 ? true : false
+            res.data.entities.client.products.map((value) => this.form.params.product_ids.push(value.id))
         }
     },
     methods: {
@@ -84,6 +88,19 @@ export default defineComponent({
         ErrorMessage,
         Input,
         FileUpload,
+    },
+    async mounted(){
+        
+        const products = await get_projects().then(res => res)
+        this.projects = products.data.entities.products
+        
+        // مشخص کردن پروژه های از قبل ثبت شده
+        this.$nextTick(()=>{
+            this.projects.map((value, index)=> {
+                if(this.form.params.product_ids.includes(value.id))
+                    this.$refs.project_checkbox[index].checked = true
+            })
+        })
     }
 })
 </script>

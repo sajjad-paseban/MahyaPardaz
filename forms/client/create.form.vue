@@ -5,7 +5,7 @@ import { defineComponent } from "vue"
 import * as yup from 'yup'
 import Input from '@/components/form/Input.vue'
 import FileUpload from '@/components/form/FileUpload.vue'
-import { create, get_clients } from '@/services/client.service'
+import { create } from '@/services/client.service'
 import Swal from 'sweetalert2'
 import { get_projects } from '@/services/project.service'
 export default defineComponent({

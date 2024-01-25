@@ -20,6 +20,7 @@
                 clients: [],
                 blogs: [],
                 projects: [],
+                project_description: 'شرکت دانش بنیان محیاپرداز یزد با تکیه بر ۲۰ سال تجربه خود در شهرداری‌های کشور، همینک سامانه یکپارچه شهرداری الکترونیک، تحت نام شهرنگار را بر پایه آخرین فناوریهای روز، بصورت فرایند و مکان محور Web Gis Bpms تولید و عرضه نموده است. در این سامانه بیش از ۵۰ فرایند اصلی شهرداری در حوزه های زیر کاملا مکانیزه شده است.'
             }
         },
         setup(){
@@ -63,12 +64,12 @@
 
 <template>
     <!-- // سامانه های شهرداری -->
-    <ProjectSection id="project" :showAllBtn="false" :showMainHeader="true" title="سامانه های شهرداری">
+    <ProjectSection id="project" :description="project_description" :showAllBtn="false" :showMainHeader="true" title="سامانه جامع شهرنگار">
         <ProjectCard v-for="(i, index) in projects" :key="index" 
-        :imgSrc="api_base_url + i.image"
-        :title="i.title"
-        :description="i.short_description"
-        :to="'/project/'+i.slug" />
+            :imgSrc="api_base_url + i.image"
+            :title="i.title"
+            :description="i.intro_description"
+            :to="'/project/'+i.slug" />
     </ProjectSection>
     <!-- // سامانه های شهرداری -->
 

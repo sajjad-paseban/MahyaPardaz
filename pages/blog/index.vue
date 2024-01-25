@@ -25,7 +25,7 @@
             })
 
             useHead({
-                title: 'بلاگ'
+                title: 'رویدادها'
             })
         },
         beforeMount: async function(){
@@ -39,7 +39,7 @@
 </script>
 
 <template>
-    <PageBanner title="بلاگ" />
+    <PageBanner title="رویدادها" />
     <div class="blog">
         <div class="row justify-content-center p-4 p-lg-0">
             <div class="col-lg-3 col-12 my-5 d-flex flex-wrap align-self-start">

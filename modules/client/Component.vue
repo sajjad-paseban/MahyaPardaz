@@ -2,13 +2,14 @@
     import 'vue3-carousel/dist/carousel.css'
     import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
     import { api_base_url as apiBaseUrl } from '~/helpers/function';
-
+    import BtnRound from '@/components/BtnRound.vue';
 
     export default defineComponent({
         name: 'client-section',
         components: {
             Carousel,
             Slide,
+            BtnRound,
             Pagination,
             Navigation,
         },
@@ -44,7 +45,7 @@
 <template>
     <div class="client-section pt-3">
         <h2 class="text-center py-2">
-            مشتریان ما
+            منتخبی از مشتریان
         </h2>
         <Carousel v-bind="settings" :breakpoints="breakpoints" :autoplay="3000" :wrap-around="true">
             <Slide v-for="(slide, index) in data" :key="index">
@@ -58,6 +59,9 @@
                 <Navigation />
             </template>
         </Carousel>
+        <div class="d-flex justify-content-center py-4">
+            <BtnRound title="مشاهده همه مشتریان" to="/clients" :is-primary="true" style="top: 0;" />
+        </div>
     </div>
 </template>
 
@@ -77,8 +81,8 @@
                 bottom: 15px;
             }
             img{
-                width: 140px;
-                height: 140px;
+                width: 110px;
+                height: 110px;
                 object-fit: contain;
             }
         }

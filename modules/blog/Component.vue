@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col text-center">
                 <h2>
-                    رویداد های ما
+                    رویدادهای ما
                 </h2>
             </div>
         </div>
@@ -23,7 +23,7 @@
         </div>
         <div class="row justify-content-center my-5">
             <div class="col-auto">
-                <btn-round to="/blog" title="مشاهده همه پست ها" :is-primary="true" />
+                <btn-round to="/blog" title="مشاهده همه رویدادها" :is-primary="true" />
             </div>
         </div>
     </div>    

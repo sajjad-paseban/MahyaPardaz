@@ -23,10 +23,15 @@
             </NuxtLink>
         </li>
         <li class="menu-item">
+            <NuxtLink to="/clients">
+                مشتریان ما
+            </NuxtLink>
+        </li>
+        <!-- <li class="menu-item">
             <NuxtLink to="/about-us">
                 درباره ما
             </NuxtLink>
-        </li>
+        </li> -->
         <!-- <li class="menu-item">
             <NuxtLink to="/service">
                 خدمات ما
@@ -34,7 +39,7 @@
         </li> -->
         <li class="menu-item">
             <NuxtLink to="/blog">
-                بلاگ
+                رویدادها
             </NuxtLink>
         </li>
         <li class="menu-item menu-item-btn">
@@ -55,10 +60,15 @@
             </NuxtLink>
         </li>
         <li class="menu-item">
+            <NuxtLink to="/clients">
+                مشتریان ما
+            </NuxtLink>
+        </li>
+        <!-- <li class="menu-item">
             <NuxtLink to="/about-us">
                 درباره ما
             </NuxtLink>
-        </li>
+        </li> -->
         <!-- <li class="menu-item">
             <NuxtLink to="/service">
                 خدمات ما
@@ -66,7 +76,7 @@
         </li> -->
         <li class="menu-item">
             <NuxtLink to="/blog">
-                بلاگ
+                رویدادها
             </NuxtLink>
         </li>
         <li class="menu-item menu-item-btn">

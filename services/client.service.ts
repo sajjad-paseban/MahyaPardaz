@@ -51,6 +51,10 @@ export const edit = async(id: number, form?: any)=>{
 
         formData.append('title', form.title)
         formData.append('_method', 'put')
+        formData.append("selected", form.selected ? "1" : "0")
+        for(const i in form.product_ids){
+            formData.append("product_ids[]", form.product_ids[i])
+        }
         if(form.image){
             formData.append('image',form.image)
         }
@@ -75,6 +79,10 @@ export const create = async(form?: any)=>{
         const formData = new FormData()
         formData.append("title", form.title)
         formData.append("image", form.image)
+        formData.append("selected", form.selected ? "1" : "0")
+        for(const i in form.product_ids){
+            formData.append("product_ids[]", form.product_ids[i])
+        }
 
         const res = await axios.post<any>(api_base_url('api/admin/clients'), formData, {
             headers: {

@@ -25,11 +25,11 @@
     <div class="background">
         <div class="background-layer"></div>
         <div class="background-main">
-            <div class="bg-main-icons">
+            <!-- <div class="bg-main-icons">
                 <div class="bg-main-icons-item" v-for="(icon, index) in icons" :key="index">
                     <img :src="'/_nuxt/assets/images/avatar/'+icon" alt="">
                 </div>
-            </div>
+            </div> -->
             <div class="bg-main-intro">
                 <h1>
                     {{ banner_title }}
@@ -60,7 +60,7 @@
             display: flex;
             top: 120px;
             width: 100%;
-            justify-content: center;
+            justify-content: flex-end;
             div{
                 text-align: right;
                 color: #ffffff;
@@ -97,8 +97,8 @@
                 }
             }
             .bg-main-intro{
-                width: calc(100% - 14.5%);
-                padding-right: 14.5%;
+                width: calc(50%);
+                padding: 0 14.5%;
                 font-family: 'entezar';
                 h1{
                     font-size: 60px;

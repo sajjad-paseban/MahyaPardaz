@@ -31,7 +31,7 @@ export default defineComponent({
         <div class="page-layer"></div>
         <div class="page-main text-center">
             <h2 dir="rtl">
-                {{ title }}
+                <!-- {{ title }} -->
             </h2>
             <!-- <div class="navigation">
                 <nuxt-link to="/">
@@ -64,7 +64,7 @@ export default defineComponent({
         }
         background-size: cover;
         background-position: center center;
-        min-height: 250px;
+        min-height: 150px;
 
         .page-layer{
             position: absolute;

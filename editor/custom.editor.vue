@@ -18,8 +18,8 @@ export default defineComponent({
             placeholder: 'بنویس...',
             language: 'fa',
             highlight_on_focus: true,
-            plugins:'lists link autolink image advlist preview code table wordcount media',
-            toolbar: 'undo redo | link image media | copy cut paste | fontsize forecolor | code | blocks | bold italic underline  | alignleft aligncenter alignjustify alignright blockquote backcolor | indent outdent | bullist numlist | code | table',
+            plugins:'lists link autolink image advlist preview code table wordcount media lineheight',
+            toolbar: 'undo redo | link image media | copy cut paste | fontsize forecolor | code | blocks | bold italic underline  | alignleft aligncenter alignjustify alignright blockquote backcolor | lineheight indent outdent | bullist numlist | code | table |',
             
         })
 

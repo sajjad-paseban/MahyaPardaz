@@ -1,4 +1,7 @@
 import { resolve } from 'path'
+import axios from 'axios'
+import { get_blogs } from './services/blog.service'
+import { api_base_url } from './helpers/function'
 
 export default defineNuxtConfig({
   devtools: { enabled: true },

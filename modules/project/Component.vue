@@ -31,17 +31,17 @@ import { string } from "yup";
         <div class="row" v-if="showHeader">
             <div class="col text-center">
                 <h2 v-if="showMainHeader" class="text-center display-6 border-bottom pb-3">
-                    محصولات ما
+                    خدمات و محصولات ما
                 </h2>
-                <br>
+                <!-- <br>
                 <h2>
                     {{ title }}
-                </h2>
+                </h2> -->
             </div>
         </div>
         <div class="row" v-if="showHeader">
             <div class="col text-center">
-                <p class="px-5">
+                <p class="px-5" dir="rtl">
                     {{ description }}
                 </p>
             </div>
