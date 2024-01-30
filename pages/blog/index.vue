@@ -41,7 +41,7 @@
 <template>
     <PageBanner title="رویدادها" />
     <div class="blog">
-        <div class="row justify-content-center p-4 p-lg-0">
+        <div class="row flex-column-reverse flex-lg-row justify-content-center p-4 p-lg-0">
             <div class="col-lg-3 col-12 my-5 d-flex flex-wrap align-self-start">
                 <div class="contact-us-card py-5 shadow shadow-sm">
                     <p>

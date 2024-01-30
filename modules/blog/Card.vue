@@ -35,6 +35,7 @@
         font-family: 'yekan';
         background-color: #fff;
         box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.3);
+        width: 380px;
         h3{
             text-align: right;
             padding: 0 25px;

@@ -4,7 +4,7 @@
         <div class="col-auto rounded shadow my-3 mx-3 p-0" v-for="(client, index) in clients" :key="index">
             <div class="client-card">
                 <div class="client-product">
-                    <h3>محصولات مشتری</h3>
+                    <h3>محصولات ارائه شده</h3>
                     <ul>
                         <li v-for="(product, index) in client.products" :key="index">
                             <nuxt-link :to="'/project/'+product.slug">
@@ -92,9 +92,15 @@
                     margin: 10px 0;
                     a{
                         color: #3b566e;
+                        &:hover{
+                            color: #384DFF;
+                        }
                     }
                     a:visited{
                         color: #3b566e;
+                        &:hover{
+                            color: #384DFF;
+                        }
                     }
                 }
             }
