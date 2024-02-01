@@ -17,7 +17,7 @@ export default defineComponent({
         const schema = yup.object({
             text: yup.string().required("فیلد آدرس اجباری می باشد"),
             phone: yup.string().required("فیلد شماره تماس اجباره می باشد"),
-            fax: yup.string().required("فیلد فکس اجباری می باشد"),
+            fax: yup.string(),
         })
 
         return {
