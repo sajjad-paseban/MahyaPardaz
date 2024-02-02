@@ -46,11 +46,5 @@ export default defineNuxtConfig({
   
   plugins:[
     {src: '@/plugins/sweetalert.js', mode: 'client'},
-  ],
-  devServer:{
-    host: '192.168.0.218',
-    port: 3000,
-    url: '192.168.0.218',
-    https: false
-  }
+  ]
 })
