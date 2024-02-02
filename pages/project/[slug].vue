@@ -33,11 +33,11 @@
         <div class="row">
             <div class="col-12">
                
-                <div class="project-detail-description row justify-content-between align-items-center my-5">
-                    <div class="col-4 p-0">
+                <div class="project-detail-description row justify-content-between align-items-end flex-column-reverse flex-lg-row my-5">
+                    <div class="col-lg-4 col-12 p-0 mt-5 mt-lg-0">
                         <img class="shadow shadow-md" :src="api_base_url + project?.image" alt="">
                     </div>
-                    <div class="col-7 position-relative">
+                    <div class="col-lg-7 col-12 position-relative">
                         <div class="row">
                             <div class="col-12" style="text-align: right;">
                                 <h2 class="display-6" style="right: 0" dir="rtl">

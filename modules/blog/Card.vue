@@ -41,6 +41,7 @@
             padding: 0 25px;
             position: relative;
             bottom: 35px;
+            min-height: 50px;
             a{
                 color: rgba(71,84,102, 1);
                 &:hover{
