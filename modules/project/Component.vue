@@ -41,12 +41,12 @@ import { string } from "yup";
         </div>
         <div class="row" v-if="showHeader">
             <div class="col text-center">
-                <p class="px-5" dir="rtl">
+                <p class="px-5 description" dir="rtl">
                     {{ description }}
                 </p>
             </div>
         </div>
-        <div class="row justify-content-center my-3">
+        <div class="row justify-content-center my-3" dir="rtl">
             <slot />
         </div>
         <div class="row justify-content-center my-5" v-if="showAllBtn">
@@ -65,7 +65,19 @@ import { string } from "yup";
         overflow: hidden;
         color: #3B566E;
         p{
+            &.description{
+                font-family: 'sans';
+                font-size: 18px;
+                line-height: 2;
+                margin: 0 12%;
+            }
             font-size: 18px;
+        }
+    }
+    
+    @media screen and (max-width: 500px) {
+        .description{
+            margin: 0 0% !important;
         }
     }
 </style>
