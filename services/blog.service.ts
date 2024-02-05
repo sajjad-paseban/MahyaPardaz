@@ -52,7 +52,7 @@ export const create = async(form?: any)=>{
 
         for(const item in form){
             if(item == "keywords"){
-                form[item].split(',').map((value: any, index: any) =>{
+                form[item].map((value: any, index: any) =>{
                     data.append(item+'['+index+']', value)
                 })
                 
@@ -82,7 +82,7 @@ export const edit = async(form?: any)=>{
         for(const item in form){
             
             if(item == "keywords"){
-                form[item].split(',').map((value: any, index: any) =>{
+                form[item].map((value: any, index: any) =>{
                     data.append(item+'['+index+']', value)
                 })
                 
