@@ -9,6 +9,7 @@ import FileUpload from '@/components/form/FileUpload.vue'
 import TextArea from '@/components/form/Textarea.vue'
 import CustomEditor from '~/editor/custom.editor.vue'
 import { create } from '@/services/blog.service'
+import VueTags from '@/components/VueTags.vue'
 
 export default defineComponent({
     name: 'ProjectCreateForm',
@@ -18,7 +19,6 @@ export default defineComponent({
         const schema = yup.object({
             title: yup.string().required("فیلد عنوان پست اجباری می باشد"),
             short_description: yup.string().required("فیلد توضیحات اجباری می باشد"),
-            keywords: yup.string().required("فیلد کلمات کلیدی اجباری می باشد"),
         })
 
         return {
@@ -28,7 +28,7 @@ export default defineComponent({
                     title: null,
                     short_description: null,
                     content: null,
-                    keywords: null,
+                    keywords: [],
                     image: null,
                 },
                 errors: null,
@@ -73,13 +73,14 @@ export default defineComponent({
         Input,
         FileUpload,
         TextArea,
-        CustomEditor
+        CustomEditor,
+        VueTags
     }
 })
 </script>
 
 <template>
-    <Form :validation-schema="form.schema" @submit="handleSubmit" class="p-2">
+    <Form :validation-schema="form.schema" @keydown.enter="$event.preventDefault()" @submit="handleSubmit" class="p-2">
         <div class="form-group">
             <Input @model="val => form.params.title = val" :value="form.params.title" label="عنوان پست" :dataLang="'fa'" name="title" id="title" />
             <ErrorMessage class="text-danger d-block" style="text-align: right;" name="title" />
@@ -101,8 +102,9 @@ export default defineComponent({
             </span>
         </div>
         <div class="form-group my-3">
-            <Input @model="val => form.params.keywords = val" :value="form.params.keywords" label="کلمات کلیدی" :dataLang="'fa'" name="keywords" id="keywords" />
-            <ErrorMessage class="text-danger d-block" style="text-align: right;" name="keywords" />
+            <VueTags 
+                :tags="form.params.keywords"
+                @tags-changed="newTags => form.params.keywords = newTags"/>
             <span style="font-size: 12px;direction: rtl;" class="text-danger d-block" v-if="form.errors?.keywords">
                 {{ form.errors?.keywords[0] }}
             </span>

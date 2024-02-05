@@ -9,6 +9,7 @@ import Email from '@/components/form/Email.vue'
 import FileUpload from '@/components/form/FileUpload.vue'
 import { edit_base_info, base_info } from '@/services/index.service'
 import Swal from 'sweetalert2'
+import VueTags from '@/components/VueTags.vue'
 export default defineComponent({
     name: 'SettingForm',
     data(){
@@ -20,7 +21,6 @@ export default defineComponent({
             seo_title: yup.string().required("فیلد عنوان سئو اجباری می باشد"),
             seo_description: yup.string().required("فیلد توضیحات سئو اجباری می باشد"),
             email: yup.string().required("فیلد پست الکترونیکی اجباری می باشد").email("پست الکترونیک معتبر نمی باشد"),
-            keywords: yup.string().required("فیلد کلمات کلیدی اجباری می باشد"),
         })
 
         return {
@@ -32,7 +32,7 @@ export default defineComponent({
                     seo_title: null,
                     seo_description: null,
                     email: null,
-                    keywords: null
+                    keywords: []
                 },
                 errors: null,
                 disable: false
@@ -47,7 +47,8 @@ export default defineComponent({
             this.form.params.seo_title = res.data.entities.base_info.seo_title
             this.form.params.seo_description = res.data.entities.base_info.seo_description
             this.form.params.email = res.data.entities.base_info.email
-            this.form.params.keywords = res.data.entities.base_info.keywords.map((value, index) => value.title).join(',')
+            // this.form.params.keywords = res.data.entities.base_info.keywords.map((value, index) => value.title).join(',')
+            this.form.params.keywords = res.data.entities.base_info.keywords.map((value, index) => value.title)
         }
     },
     methods: {
@@ -56,7 +57,7 @@ export default defineComponent({
             this.form.disable = true
             this.form.errors = null
 
-            form['keywords'] = form['keywords'].split(',')
+            form['keywords'] = this.form.params.keywords
             const res = await edit_base_info(form).then(res => res)
             const Toast = Swal.mixin({
                 toast: true,
@@ -90,12 +91,13 @@ export default defineComponent({
         Email,
         FileUpload,
         Textarea,
+        VueTags
     },
 })
 </script>
 
 <template>
-    <Form :validation-schema="form.schema" @submit="handleSubmit" class="p-2">
+    <Form :validation-schema="form.schema" @keydown.enter="$event.preventDefault()" @submit="handleSubmit" class="p-2">
         <div class="form-group my-2">
             <Input @model="val => form.params.banner_title = val" :value="form.params.banner_title" label="عنوان بنر" :dataLang="'fa'" name="banner_title" id="banner_title" />
             <ErrorMessage class="text-danger d-block" style="text-align: right;" name="banner_title" />
@@ -131,9 +133,10 @@ export default defineComponent({
                 {{ form.errors?.email[0] }}
             </span>
         </div>
-        <div class="form-group my-2">
-            <Input @model="val => form.params.keywords = val" :value="form.params.keywords" label="کلمات کلیدی" :dataLang="'fa'" name="keywords" id="keywords" />
-            <ErrorMessage class="text-danger d-block" style="text-align: right;" name="keywords" />
+        <div class="form-group my-3">
+            <VueTags 
+                :tags="form.params.keywords"
+                @tags-changed="newTags => form.params.keywords = newTags"/>
             <span style="font-size: 12px;direction: rtl;" class="text-danger d-block" v-if="form.errors?.keywords">
                 {{ form.errors?.keywords[0] }}
             </span>
