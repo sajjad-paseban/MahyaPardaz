@@ -62,6 +62,9 @@ export default defineComponent({
                         #
                     </th>
                     <th>
+                        اولویت    
+                    </th>
+                    <th>
                         عنوان
                     </th>
                     <th>
@@ -81,6 +84,7 @@ export default defineComponent({
             <tbody>
                 <tr v-for="(item, index) in projects" :key="index">
                     <td>{{ index + 1 }}</td>
+                    <td>{{ item.priority }}</td>
                     <td>{{ item.title }}</td>
                     <td>{{ item.type ? 'سامانه شهروندی' : 'سامانه شهرداری' }}</td>
                     <td>
