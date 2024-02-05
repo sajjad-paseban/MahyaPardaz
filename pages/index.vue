@@ -68,9 +68,9 @@
         <ProjectCard v-for="(i, index) in projects" :key="index" 
             :imgSrc="api_base_url + i.image"
             :title="i.title"
-            :description="i.intro_description"
-            :to="'/project/'+i.slug" />
-    </ProjectSection>
+            :description="i.intro_description" />
+        </ProjectSection>
+        <!-- :to="'/project/'+i.slug" /> -->
     <!-- // سامانه های شهرداری -->
 
     <!-- // سامانه های شهروندی -->
