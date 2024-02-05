@@ -5,12 +5,13 @@ import Swal from 'sweetalert2'
 import { Form, ErrorMessage } from 'vee-validate'
 import { defineComponent } from "vue"
 import Input from '@/components/form/Input.vue'
+import Number from '@/components/form/Number.vue'
 import FileUpload from '@/components/form/FileUpload.vue'
 import TextArea from '@/components/form/Textarea.vue'
 import SelectBox from '@/components/form/SelectBox.vue'
 import CustomEditor from '~/editor/custom.editor.vue'
 import { edit, get_project } from '@/services/project.service'
-
+import VueTags from '@/components/VueTags.vue'
 export default defineComponent({
     name: 'ProjectEditForm',
     data(){
@@ -21,7 +22,7 @@ export default defineComponent({
             type: yup.string().required('فیلد نوع سامانه اجباری می باشد'),
             intro_description: yup.string().required("فیلد توضیحات مقدمه می باشد"),
             short_description: yup.string().required("فیلد توضیحات اجباری می باشد"),
-            keywords: yup.string().required("فیلد کلمات کلیدی اجباری می باشد"),
+            priority: yup.string().required("فیلد اولویت اجباری می باشد"),
         })
 
         return {
@@ -34,8 +35,9 @@ export default defineComponent({
                     intro_description: null,
                     short_description: null,
                     content: null,
-                    keywords: null,
+                    keywords: [],
                     image: null,
+                    priority: null
                 },
                 errors: null,
                 disable: false
@@ -56,7 +58,9 @@ export default defineComponent({
             this.form.params.intro_description = res.data.entities.product.intro_description || null
             this.form.params.short_description = res.data.entities.product.short_description
             this.form.params.content = res.data.entities.product.content
-            this.form.params.keywords = res.data.entities.product.keywords.map((value, index) => value.title).join(',')
+            this.form.params.priority = res.data.entities.product.priority
+            // this.form.params.keywords = res.data.entities.product.keywords.map((value, index) => value.title).join(',')
+            this.form.params.keywords = res.data.entities.product.keywords.map((value, index) => value.title)
         }
     },
     methods: {
@@ -95,16 +99,18 @@ export default defineComponent({
         Form,
         ErrorMessage,
         Input,
+        Number,
         SelectBox,
         FileUpload,
         TextArea,
-        CustomEditor
+        CustomEditor,
+        VueTags
     }
 })
 </script>
 
 <template>
-    <Form :validation-schema="form.schema" @submit="handleSubmit" class="p-2">
+    <Form :validation-schema="form.schema" @keydown.enter="$event.preventDefault()" @submit="handleSubmit" class="p-2">
         <div class="form-group">
             <Input @model="val => form.params.title = val" :value="form.params.title" label="عنوان پروژه" :dataLang="'fa'" name="title" id="title" />
             <ErrorMessage class="text-danger d-block" style="text-align: right;" name="title" />
@@ -144,10 +150,18 @@ export default defineComponent({
             </span>
         </div>
         <div class="form-group my-3">
-            <Input @model="val => form.params.keywords = val" :value="form.params.keywords" label="کلمات کلیدی" :dataLang="'fa'" name="keywords" id="keywords" />
-            <ErrorMessage class="text-danger d-block" style="text-align: right;" name="keywords" />
+            <VueTags 
+                :tags="form.params.keywords"
+                @tags-changed="newTags => form.params.keywords = newTags"/>
             <span style="font-size: 12px;direction: rtl;" class="text-danger d-block" v-if="form.errors?.keywords">
                 {{ form.errors?.keywords[0] }}
+            </span>
+        </div>
+        <div class="form-group my-3">
+            <Number @model="val => form.params.priority = val" :value="form.params.priority" label="اولویت" :dataLang="'fa'" name="priority" id="priority" />
+            <ErrorMessage class="text-danger d-block" style="text-align: right;" name="priority" />
+            <span style="font-size: 12px;direction: rtl;" class="text-danger d-block" v-if="form.errors?.priority">
+                {{ form.errors?.priority[0] }}
             </span>
         </div>
         <div class="form-group">
