@@ -80,7 +80,7 @@
     .project-detail{
         overflow: hidden;
         padding: 80px 15%;
-        font-family: 'yekan';
+        font-family: 'koodakbold';
 
         .project-detail-description{
             h2{
@@ -126,7 +126,7 @@
                     direction: rtl;
                     color: #6F8BA4;
                     *{
-                        font-family: 'yekan' !important;
+                        font-family: 'koodakbold' !important;
                     }
                 }
             }
